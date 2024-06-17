@@ -1,5 +1,5 @@
-import {  NextResponse } from "next/server";
-const bcrypt = require('bcryptjs');
+import { NextResponse } from "next/server";
+const bcrypt = require("bcryptjs");
 import DbConnection from "../middleware/DatabaseConnection";
 import userPersonalData from "../model/userDataSchema";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -98,15 +98,15 @@ export async function POST(req) {
         }
       );
     }
-// generating  hash of password
-const salt=await bcrypt.genSaltSync(10);
-const securePassword=await bcrypt.hash(password,salt);
+    // generating  hash of password
+    const salt = await bcrypt.genSaltSync(10);
+    const securePassword = await bcrypt.hash(password, salt);
     // create user account in database
     const newUser = new userPersonalData({
       fname,
       lname,
       email,
-      password:securePassword,
+      password: securePassword,
     });
     await newUser.save();
 

@@ -2,11 +2,11 @@
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import style from "../login/style.module.css";
 import { useState } from "react";
 export default function Page() {
-    const { push } = useRouter();
+  const { push } = useRouter();
 
   const [formData, setFormData] = useState({
     fname: "",
@@ -116,32 +116,29 @@ export default function Page() {
       return;
     }
 
-
-
-
     // now send to data base
-    const res=await fetch('/api/register',{
-        method:"POST",
-        headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(formData)
-    })
-    let serverPayload=await res.json();
-    if(res.status=="500"){
-        toast.error("Internal Server Error", {
-            position: "bottom-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          return;
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    let serverPayload = await res.json();
+    if (res.status == "500") {
+      toast.error("Internal Server Error", {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
     }
-if(res.status=="400"){
-    toast.warn(`${serverPayload.error}`, {
+    if (res.status == "400") {
+      toast.warn(`${serverPayload.error}`, {
         position: "bottom-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -151,10 +148,10 @@ if(res.status=="400"){
         progress: undefined,
       });
       return;
-}
+    }
 
-if(res.status=="201"){
-    toast.success(serverPayload.message, {
+    if (res.status == "201") {
+      toast.success(serverPayload.message, {
         position: "bottom-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -164,12 +161,11 @@ if(res.status=="201"){
         progress: undefined,
       });
 
-      setTimeout(()=>{
-        push('/login');
-      },2000)
+      setTimeout(() => {
+        push("/login");
+      }, 2000);
       return;
-}
-
+    }
   };
   return (
     <div className={style.login}>
