@@ -13,8 +13,7 @@ export const metadata = {
   keywords: ["Byte BAZAAR E-Commerce platform",],
  
   creator: "impactmindz tech solutions",
-  publisher: "impactmindz tech solutions",
-  viewport: "width=device-width, initial-scale=1",
+  publisher: "impactmindz tech solutions"
 };
 export default function RootLayout({ children }) {
   return (
