@@ -1,17 +1,39 @@
+'use client'
+
+
 import Link from "next/link";
 import style from "../login/style.module.css";
-export default function page() {
-  return (
+import { useState } from "react";
+export default function Page() {
+const [formData,setFormData]=useState({
+fname:'',
+lname:'',
+email:'',
+password:''
+})
+
+// handle form enter value
+const handleFormData=(e)=>{
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+}
+
+
+// register api calling
+const sendDataToServer=async(e)=>{
+    e.preventDefault();
+
+}
+    return (
     <div className={style.login}>
       <div className={style.form_container}>
         <h1>Create Account</h1>
         <p>Please Register using account detail bellow.</p>
 
-        <form>
-          <input type="text" placeholder="First Name" required />
-          <input type="text" placeholder="Last Name" required />
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
+        <form onSubmit={sendDataToServer}>
+          <input type="text" name="fname" placeholder="First Name" value={formData.fname} onChange={(e)=>handleFormData(e)} required />
+          <input type="text" name="lname" placeholder="Last Name" value={formData.lname} onChange={(e)=>handleFormData(e)} required />
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={(e)=>handleFormData(e)} required />
+          <input type="password" name="password" placeholder="Password" value={formData.password} onChange={(e)=>handleFormData(e)} required />
           <div className={style.btn_section}>
             <button>Create</button>
           </div>
