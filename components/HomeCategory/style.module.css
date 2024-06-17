@@ -1,0 +1,29 @@
+.category_cards{
+    width: 100%;
+    display: flex;
+    padding-left: 5%;
+    margin: 5% 0;
+}
+.category_cards .card{
+    width: 22%;
+    margin-right: 2%;
+}
+.category_cards .card .imageSection{
+    position: relative;
+    width: 100%;
+    height: 21vw;
+}
+.category_cards .card .imageSection img{
+    cursor: pointer;
+    
+    border-radius: 20px;
+}
+.category_cards .card:hover h2{
+    cursor: pointer;
+    color: rgb(0, 117, 159);
+}
+
+.category_cards .card h2{
+    text-align: center;
+    margin-top: 4%;
+}
