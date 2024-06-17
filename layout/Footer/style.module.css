@@ -1,0 +1,134 @@
+.footer {
+  padding-top: 0.5%;
+  padding-bottom: 5%;
+  background-color: #ebebeb;
+}
+
+.footer .iconParent {
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+  border-radius: 20px;
+  height: 12vw;
+  display: flex;
+  background-color: #fff;
+}
+
+.footer .iconParent li {
+  display: flex;
+  padding-top: 4%;
+  margin-left: 2%;
+  width: 22%;
+}
+
+.footer .iconParent .icon {
+  font-size: 4vw;
+  padding-right: 2%;
+}
+
+.footer .iconParent .details {
+  margin-top: 2%;
+}
+.footer .iconParent .details h5 {
+  font-weight: 450;
+  padding-top: 2%;
+}
+.footer .iconParent .details h5 span {
+  font-weight: 600;
+}
+
+/* footer_details */
+.footer .footer_details {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer .footer_details .aboutUsContainer {
+  position: relative;
+  width: 30%;
+}
+
+.footer .footer_details .aboutUsContainer h1 {
+  font-size: 1.5vw;
+  margin-bottom: 3%;
+}
+.footer .footer_details .aboutUsContainer p {
+  font-size: 1vw;
+  width: 80%;
+  margin-bottom: 3%;
+}
+.quickLink {
+  width: 15%;
+}
+.footer .footer_details .quickLink h1 {
+  font-size: 1.5vw;
+  margin-bottom: 3%;
+}
+
+.quickLink li {
+  margin-bottom: 5%;
+  list-style: none;
+}
+
+.quickLink li a {
+  color: black;
+}
+.footer .footer_details .aboutUsContainer input {
+  background-color: white;
+  border: none;
+  width: 100%;
+  padding: 3% 5%;
+  font-size: 1vw;
+  outline: none;
+}
+
+.footer .footer_details .aboutUsContainer button {
+  position: absolute;
+  bottom: 10;
+  right: 0;
+  width: 130px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  height: 43px;
+  background-color: rgb(1, 146, 203);
+}
+.footer .footer_details .aboutUsContainer button:hover {
+  background-color: black;
+}
+
+/* list_line */
+.list_line {
+  display: flex;
+  justify-content: center;
+  padding-top: 2%;
+  padding-left: 2%;
+  margin-top: 5%;
+  margin-right: 5%;
+  border-top: 1px solid rgb(199, 199, 199);
+}
+.list_line .brandName a {
+  font-weight: 600;
+  color: black;
+  text-transform: capitalize;
+}
+
+.list_line .linkFooter {
+  margin-left: 80%;
+
+  display: flex;
+  margin-left: 20%;
+  list-style: none;
+}
+
+.list_line .linkFooter li {
+  margin-right: 2%;
+  width: 140px;
+}
+.list_line .linkFooter li a {
+  color: black;
+}
+.list_line .linkFooter li a:hover {
+  color: rgb(3, 158, 220);
+}
