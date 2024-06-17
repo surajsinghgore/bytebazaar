@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function page() {
+  const [preventPage,setPreventPage]=useState(false);
     const { push } = useRouter();
   const [formData, setFormData] = useState({
     email: "",
@@ -103,10 +104,16 @@ export default function page() {
   useEffect(()=>{
     if(localStorage.getItem('clientLogin')){
       push('/')
+      setPreventPage(false);
+      
+    }else{
+      setPreventPage(true);
+
     }
-  },[])
+  })
   return (
-    <div className={style.login}>
+    <>
+{(preventPage)?<div className={style.login}>
       <div className={style.form_container}>
         <h1>Login</h1>
         <p>Please login using account detail bellow.</p>
@@ -152,6 +159,8 @@ export default function page() {
         draggable
         pauseOnHover
       />
-    </div>
+    </div>:<h1 className={style.withoutLogin}>Please Logout To Access This Page</h1>}
+  
+    </>
   );
 }

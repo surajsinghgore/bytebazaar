@@ -10,6 +10,7 @@ a {
 
 header {
   display: flex;
+  z-index: 999;
   padding-bottom: 2%;
   border-bottom: 1px solid rgb(214, 214, 214);
 }
@@ -91,8 +92,10 @@ header .header_right li i span {
 header .header_right li ul {
   display: none;
   position: absolute;
-  top: 86%;
+  top: 90%;
   right: 45%;
+  z-index: 999;
+
   padding: 0vw 1vw;
   list-style: none;
   padding-bottom: 43%;
@@ -103,7 +106,7 @@ header .header_right li ul {
 }
 
 header .header_right li ul li {
-  width: 120px;
+  width: 145px;
   padding-top: 3%;
   font-size: 1.1vw !important;
 }

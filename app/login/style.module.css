@@ -1,3 +1,9 @@
+.withoutLogin{
+  margin-top: 2%;
+  color: rgb(2, 154, 255);
+  font-size: 3vw;
+  text-align: center;
+}
 .login {
   display: flex;
   padding-bottom: 6%;
