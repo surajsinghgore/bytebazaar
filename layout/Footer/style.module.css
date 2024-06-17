@@ -67,9 +67,14 @@
 }
 
 .quickLink li {
+    margin-top: 12%;
   margin-bottom: 5%;
   list-style: none;
 }
+.quickLink li a:hover{
+    color: rgb(1, 126, 242);
+}
+
 
 .quickLink li a {
   color: black;
