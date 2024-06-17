@@ -8,7 +8,7 @@ export default function page() {
     <header>
       {/* header logo */}
       <div className="icon">
-        <Image src="/icon.jpg" alt="icon logo"layout="fill" />
+        <Image src="/icon.jpg" alt="icon logo" layout="fill" />
       </div>
       <span className="brand_title">
         BYTE <span className="sub_brand_name">BAZAAR</span>
@@ -16,17 +16,42 @@ export default function page() {
 
       {/* links */}
       <div className="links_container">
-<li><Link href={""}>Home</Link></li>
-<li><Link href={""}>Shop</Link></li>
-<li><Link href={""}>Category</Link></li>
-<li><Link href={""}>Product</Link></li>
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
+          <Link href={""}>Shop</Link>
+        </li>
+        <li>
+          <Link href={""}>Category</Link>
+        </li>
+        <li>
+          <Link href={""}>Product</Link>
+        </li>
       </div>
 
       {/* right section */}
       <div className="header_right">
-        <li><i><IoSearch/></i></li>
-        <li><i><Link href="/register"><FaRegUser/></Link></i></li>
-        <li><i><Link href="/"><span>0</span><FiShoppingCart/></Link></i></li>
+        <li>
+          <i>
+            <IoSearch />
+          </i>
+        </li>
+        <li>
+          <i>
+            <Link href="/register">
+              <FaRegUser />
+            </Link>
+          </i>
+        </li>
+        <li>
+          <i>
+            <Link href="/">
+              <span>0</span>
+              <FiShoppingCart />
+            </Link>
+          </i>
+        </li>
       </div>
     </header>
   );

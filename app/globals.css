@@ -1,21 +1,20 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
- a{
+a {
   text-decoration: none;
 }
 /* header section styling */
 
-
-header{
+header {
   display: flex;
   padding-bottom: 2%;
-border-bottom: 1px solid rgb(214, 214, 214);
+  border-bottom: 1px solid rgb(214, 214, 214);
 }
 
-header .icon{
+header .icon {
   margin-left: 2%;
   margin-top: 1.5%;
   position: relative;
@@ -23,65 +22,67 @@ header .icon{
   height: 50px;
 }
 
-header .brand_title{
+header .brand_title {
   padding-top: 2%;
   font-size: 1.8vw;
 }
 
-header .brand_title .sub_brand_name{
+header .brand_title .sub_brand_name {
   color: #12addf !important;
 }
 
 /* links_container */
-header .links_container{
+header .links_container {
   display: flex;
   width: 55%;
   justify-content: center;
   margin-left: 4%;
   list-style: none;
 }
-header .links_container li{
+header .links_container li {
   margin-right: 5%;
   font-weight: 600;
   font-size: 1.2vw;
   margin-top: 4.5%;
 }
 
-header .links_container li a{
+header .links_container li a {
   color: rgb(57, 57, 57);
 }
 
 /* header right side icons */
-header .header_right{
+header .header_right {
   display: flex;
   width: 20%;
   justify-content: center;
   list-style: none;
 }
-header .header_right li{
+header .header_right li {
   position: relative;
-padding-right: 18px;
-font-size: 1.8vw;
-margin-top: 10%;
+  padding-right: 18px;
+  font-size: 1.8vw;
+  margin-top: 10%;
 }
-header .header_right li i a{
-color: rgb(45, 45, 45);
-
+header .header_right li i a {
+  color: rgb(45, 45, 45);
 }
-header .header_right li i a:hover{
+header .header_right li i a:hover {
+  color: rgb(0, 187, 255);
+}
+header .header_right li i a:hover span {
   color: rgb(0, 187, 255);
 }
 
-header .header_right li i{
+header .header_right li i {
   cursor: pointer;
 }
-header .header_right li i span{
-position: absolute;
-color: rgb(0, 0, 0);
-font-size: 0.9vw;
-top: -30%;
-border-radius: 60px;
-padding: 0.2vw 0.7vw;
-font-weight: 600;
-right:15%;
+header .header_right li i span {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  font-size: 0.9vw;
+  top: -30%;
+  border-radius: 60px;
+  padding: 0.2vw 0.7vw;
+  font-weight: 600;
+  right: 15%;
 }
