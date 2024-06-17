@@ -1,11 +1,14 @@
-import { NextRequest, NextResponse } from "next/server";
+import {  NextResponse } from "next/server";
+const bcrypt = require('bcryptjs');
 import DbConnection from "../middleware/DatabaseConnection";
-// import clientPersonalData from "../models/clientPersonalSchema";
+import userPersonalData from "../model/userDataSchema";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const passwordRegex =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/;
 
 export async function POST(req) {
+  await DbConnection();
   try {
-    await DbConnection();
     // const res=await NextRequest.
     //   await DbConnection();
     let { fname, lname, email, password } = await req.json();
@@ -14,7 +17,7 @@ export async function POST(req) {
     if (!fname) {
       return NextResponse.json(
         {
-          message: "First name is required",
+          error: "First name is required",
         },
         {
           status: 400,
@@ -24,7 +27,7 @@ export async function POST(req) {
     if (fname.length < 3) {
       return NextResponse.json(
         {
-          message: "First name must be at least 3 characters long",
+          error: "First name must be at least 3 characters long",
         },
         {
           status: 400,
@@ -34,7 +37,7 @@ export async function POST(req) {
     if (!lname) {
       return NextResponse.json(
         {
-          message: "Last name is required",
+          error: "Last name is required",
         },
         {
           status: 400,
@@ -44,7 +47,7 @@ export async function POST(req) {
     if (!email) {
       return NextResponse.json(
         {
-          message: "Email is required",
+          error: "Email is required",
         },
         {
           status: 400,
@@ -54,7 +57,7 @@ export async function POST(req) {
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         {
-          message: "Email is not valid",
+          error: "Email is not valid",
         },
         {
           status: 400,
@@ -64,17 +67,18 @@ export async function POST(req) {
     if (!password) {
       return NextResponse.json(
         {
-          message: "Password is required",
+          error: "Password is required",
         },
         {
           status: 400,
         }
       );
     }
-    if (password.length !== 5 || !/^\d{5}$/.test(password)) {
+    if (!passwordRegex.test(password)) {
       return NextResponse.json(
         {
-          message: "Password must be exactly 5 digits long and numeric",
+          error:
+            "Password must be at least 5 characters long and include at least one symbol, one uppercase letter, one lowercase letter, and one number.",
         },
         {
           status: 400,
@@ -82,32 +86,43 @@ export async function POST(req) {
       );
     }
 
-    // // check weather user exits for not
-    // let data=await clientPersonalData.findOne({email:email});
-
-    // // create new entry only if user not exits in database
-    // if(!data){
-
-    // let dataSend = new clientPersonalData({
-    //     name,
-    //     email,
-    //     image,
-    //   });
-
-    // await dataSend.save();
+    //  check weather user already exits or not
+    let userLen = await userPersonalData.findOne({ email: email });
+    if (userLen) {
+      return NextResponse.json(
+        {
+          error: "An account with this email address already exists",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+// generating  hash of password
+const salt=await bcrypt.genSaltSync(10);
+const securePassword=await bcrypt.hash(password,salt);
+    // create user account in database
+    const newUser = new userPersonalData({
+      fname,
+      lname,
+      email,
+      password:securePassword,
+    });
+    await newUser.save();
 
     return NextResponse.json(
       {
-        message: "user register successfully",
+        message: "User registered successfully!",
       },
       {
         status: 200,
       }
     );
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       {
-        message: "Internal Server Error" + error,
+        error: "Internal Server Error" + error,
       },
       {
         status: 500,

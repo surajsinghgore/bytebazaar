@@ -1,21 +1,35 @@
-const mongoose=require("mongoose");
-const url=process.env.NEXT_PUBLIC_DATABASE_CONNECTION_URL;
+import mongoose from "mongoose";
 
-const MongoooseConnection=async()=>{
+import {  NextResponse } from "next/server";
+let connectionUrl = process.env.NEXT_PUBLIC_DATABASE_CONNECTION_URL;
+console.log(connectionUrl)
 
+const DbConnection = async (req, res) => {
 try {
-const res=mongoose.connect(url);
-    if(res){
-console.log("successfully connected")
-}
+    let res=await mongoose.connect(connectionUrl);
+  if(!res){
+    return NextResponse.json(
+        {
+          message: "Internal Server Error In Database Connection",
+        },
+        {
+          status: 500,
+        }
+      );
+  }
+ 
 } catch (error) {
-    console.log("not connected")
+  
+    return NextResponse.json(
+        {
+          message: "Internal Server Error In Database Connection" + error,
+        },
+        {
+          status: 500,
+        }
+      );
 }
 
-
-
 }
 
-
-
-module.exports=MongoooseConnection;
+export default DbConnection;
