@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-// import DbConnection from "../controller/DatabaseConnection";
+import DbConnection from "../middleware/DatabaseConnection";
 // import clientPersonalData from "../models/clientPersonalSchema";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req) {
   try {
+    await DbConnection();
     // const res=await NextRequest.
     //   await DbConnection();
     let { fname, lname, email, password } = await req.json();
