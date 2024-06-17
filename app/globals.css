@@ -86,3 +86,35 @@ header .header_right li i span {
   font-weight: 600;
   right: 15%;
 }
+
+/* user drop down styling */
+header .header_right li ul {
+  display: none;
+  position: absolute;
+  top: 86%;
+  right: 45%;
+  padding: 0vw 1vw;
+  list-style: none;
+  padding-bottom: 43%;
+  box-shadow: 2px 2px 12px 2px rgb(191, 191, 191);
+  border-top: 1px solid rgb(189, 189, 189);
+  background-color: white;
+  transition: all 2s;
+}
+
+header .header_right li ul li {
+  width: 120px;
+  padding-top: 3%;
+  font-size: 1.1vw !important;
+}
+header .header_right li ul li a {
+  color: black;
+}
+
+header .header_right li ul li:hover a {
+  color: rgb(4, 121, 230);
+}
+
+.userMenu:hover .userSubMenu {
+  display: block !important;
+}

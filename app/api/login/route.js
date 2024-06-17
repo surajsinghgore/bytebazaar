@@ -62,7 +62,7 @@ export async function POST(req) {
       password,
       activeUserData.password
     );
-  
+
     if (!compPassword) {
       return NextResponse.json(
         {
@@ -85,14 +85,12 @@ export async function POST(req) {
     const clientToken = jwt.sign(data, JWT_SECRET, {
       expiresIn: "24h",
     });
-  
-   
 
-    cookies().set("clientToken", clientToken,{
-        httpOnly: true,
-        path: "/",
-        expires: new Date(Date.now() + 86400000),
-        secure: true,
+    cookies().set("clientToken", clientToken, {
+      httpOnly: true,
+      path: "/",
+      expires: new Date(Date.now() + 86400000),
+      secure: true,
     });
 
     return NextResponse.json(

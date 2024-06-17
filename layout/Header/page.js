@@ -1,14 +1,25 @@
+"use client";
 import Image from "next/image";
 import { IoSearch } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import Link from "next/link";
-export default function page() {
+import { useEffect, useState } from "react";
+export default function Page() {
+  const [loginStatus, setLoginStatus] = useState(false);
+  // login user validate
+  useEffect(() => {
+    if (localStorage.getItem("login")) {
+      setLoginStatus(true);
+    }
+  });
   return (
     <header>
       {/* header logo */}
       <div className="icon">
-        <Image src="/icon.jpg" alt="icon logo" layout="fill" />
+        <Link href="/">
+          <Image src="/icon.jpg" alt="icon logo" layout="fill" />
+        </Link>
       </div>
       <span className="brand_title">
         BYTE <span className="sub_brand_name">BAZAAR</span>
@@ -37,12 +48,23 @@ export default function page() {
             <IoSearch />
           </i>
         </li>
-        <li>
+        <li className="userMenu">
           <i>
-            <Link href="/register">
+            <Link href={loginStatus ? "/user" : "/login"}>
               <FaRegUser />
             </Link>
           </i>
+          <ul className="userSubMenu">
+            <li>
+              <Link href="">My Account</Link>
+            </li>
+            <li>
+              <Link href="">Wish List</Link>
+            </li>
+            <li>
+              <Link href="">Logout</Link>
+            </li>
+          </ul>
         </li>
         <li>
           <i>
