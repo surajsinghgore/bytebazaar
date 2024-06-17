@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+ a{
+  text-decoration: none;
+}
 /* header section styling */
 
 
@@ -43,4 +45,43 @@ header .links_container li{
   font-weight: 600;
   font-size: 1.2vw;
   margin-top: 4.5%;
+}
+
+header .links_container li a{
+  color: rgb(57, 57, 57);
+}
+
+/* header right side icons */
+header .header_right{
+  display: flex;
+  width: 20%;
+  justify-content: center;
+  list-style: none;
+}
+header .header_right li{
+  position: relative;
+padding-right: 18px;
+font-size: 1.8vw;
+margin-top: 10%;
+}
+header .header_right li i a{
+color: rgb(45, 45, 45);
+
+}
+header .header_right li i a:hover{
+  color: rgb(0, 187, 255);
+}
+
+header .header_right li i{
+  cursor: pointer;
+}
+header .header_right li i span{
+position: absolute;
+color: rgb(0, 0, 0);
+font-size: 0.9vw;
+top: -30%;
+border-radius: 60px;
+padding: 0.2vw 0.7vw;
+font-weight: 600;
+right:15%;
 }
