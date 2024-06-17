@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import style from "./style.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function page() {
@@ -91,13 +91,20 @@ export default function page() {
           draggable: true,
           progress: undefined,
         });
-        localStorage.setItem('login',"true");
+        localStorage.setItem('clientLogin',"true");
         setTimeout(() => {
           push("/");
         }, 2000);
         return;
       }
   };
+
+
+  useEffect(()=>{
+    if(localStorage.getItem('clientLogin')){
+      push('/')
+    }
+  },[])
   return (
     <div className={style.login}>
       <div className={style.form_container}>

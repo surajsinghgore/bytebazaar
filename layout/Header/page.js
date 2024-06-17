@@ -1,18 +1,60 @@
 "use client";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { IoSearch } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 export default function Page() {
+  const { push } = useRouter();
+
   const [loginStatus, setLoginStatus] = useState(false);
-  // login user validate
-  useEffect(() => {
-    if (localStorage.getItem("login")) {
-      setLoginStatus(true);
-    }
+
+
+  // logout functionality
+  const logout=async()=>{
+if(localStorage.getItem('clientLogin')){
+  const res=await fetch('/api/logout',{
+    method:"POST"
+  })
+  if(res.status=="200"){
+    push('/')
+    setLoginStatus(false);
+    localStorage.removeItem('clientLogin')
+    toast.success(`Client Logout Successfully`, {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    return;
+  }
+}else{
+  toast.success(`Please Login with proper credentials`, {
+    position: "bottom-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
   });
+}
+  }
+
+
+    // login user validate
+    useEffect(() => {
+      if (localStorage.getItem("clientLogin")) {
+        setLoginStatus(true);
+      }
+    },[]);
   return (
     <header>
       {/* header logo */}
@@ -54,17 +96,18 @@ export default function Page() {
               <FaRegUser />
             </Link>
           </i>
-          <ul className="userSubMenu">
+          {loginStatus?<><ul className="userSubMenu">
             <li>
               <Link href="">My Account</Link>
             </li>
             <li>
               <Link href="">Wish List</Link>
             </li>
-            <li>
-              <Link href="">Logout</Link>
+            <li onClick={()=>logout()}>
+           Logout
             </li>
-          </ul>
+          </ul></>:""}
+        
         </li>
         <li>
           <i>
@@ -75,6 +118,17 @@ export default function Page() {
           </i>
         </li>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </header>
   );
 }

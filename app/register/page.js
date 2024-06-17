@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import style from "../login/style.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function Page() {
   const { push } = useRouter();
 
@@ -167,6 +167,14 @@ export default function Page() {
       return;
     }
   };
+
+
+
+  useEffect(()=>{
+    if(localStorage.getItem('clientLogin')){
+      push('/')
+    }
+  },[])
   return (
     <div className={style.login}>
       <div className={style.form_container}>
