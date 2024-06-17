@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 import {  NextResponse } from "next/server";
 let connectionUrl = process.env.NEXT_PUBLIC_DATABASE_CONNECTION_URL;
-console.log(connectionUrl)
+
 
 const DbConnection = async (req, res) => {
 try {

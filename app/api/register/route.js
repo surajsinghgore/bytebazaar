@@ -115,7 +115,7 @@ const securePassword=await bcrypt.hash(password,salt);
         message: "User registered successfully!",
       },
       {
-        status: 200,
+        status: 201,
       }
     );
   } catch (error) {
