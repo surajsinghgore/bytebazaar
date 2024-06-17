@@ -7,10 +7,9 @@ const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/;
 
 export async function POST(req) {
-  await DbConnection();
   try {
-    // const res=await NextRequest.
-    //   await DbConnection();
+    await DbConnection();
+
     let { fname, lname, email, password } = await req.json();
 
     // validation to form data
