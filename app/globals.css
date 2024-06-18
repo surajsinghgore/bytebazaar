@@ -185,3 +185,114 @@ header .header_right li ul li:hover {
 header li:hover .mainSubMenu {
   display: flex !important;
 }
+
+
+/* cart page ui */
+.cart_container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  height: 100vh;
+}
+
+.bgBlur{
+  width: 72%;
+  opacity: 0.4;
+  height: 100vh;
+background-color: rgb(1, 1, 1);
+}
+.cart_page{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  height: 100vh;
+  position: fixed;
+  width: 30%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 5px 12px 4px rgb(234, 234, 234);
+}
+.cart_page h2{
+  position: relative;
+  padding-top: 6%;
+  font-weight: 500;
+  font-size: 1.5vw;
+  padding-bottom: 5%;
+  margin-top: 5%;
+  margin-left: 10%;
+  color: rgb(69, 69, 69);
+  width:80%;
+  border-bottom: 1px solid rgb(237, 237, 237);
+}
+.cart_page h2 .close{
+  position: absolute;
+  top: 45%;
+cursor: pointer;
+  right: 10%;
+}
+
+
+.item_container{
+  width: 80%;
+margin-left: 10%;
+margin-top: 3%;
+height: 28vw;
+overflow-x: hidden;
+overflow-y: auto;
+background-color: rgb(235, 235, 235);
+}
+
+
+.total_sum{
+  width: 80%;
+padding: 3% 0;
+margin-top: 3%;
+  margin-left: 10%;
+  border-top: 1px solid rgb(237, 237, 237);
+  height: 50px;
+  border-bottom: 1px solid rgb(237, 237, 237);
+}
+.total_sum h1{
+  float: left;
+  width: 50%;
+  font-size: 1.3vw;
+}
+.total_sum p{
+  float: right;
+  width: 50%;
+  text-align: right;
+  font-size: 1.3vw;
+  color: rgb(1, 120, 167);
+}
+
+.cartButton{
+  width: 80%;
+  margin-top: 6%;
+  margin-left: 10%;
+}
+
+.cartButton button{
+  width: 48%;
+  margin-right: 2%;
+  background-color: rgb(0, 116, 161);
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2vw;
+  transition: all 0.2s;
+}
+.cartButton button a{
+  color: white;
+}
+
+.cartButton button:hover{
+  background-color: rgb(0, 73, 102);
+}

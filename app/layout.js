@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from '../layout/Header/page'
 import Footer from '../layout/Footer/page'
+import CardPage from '../components/CartPage/page'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       <Providers>
 
       <Header />
+      <CardPage/>
       {children}
       <Footer />
 

@@ -57,6 +57,7 @@ cursor: pointer;
   color: white;
   border: 2px solid rgb(192, 235, 253);
   transition: all 0.5s;
+  user-select: none;
 }
 .adminLogin .formSection button:hover{
     background-color: rgb(16, 134, 185);

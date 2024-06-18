@@ -96,19 +96,21 @@ export default function Page() {
 
               <div className="links_main_subMenu">
                 <div className="li">
-                  <Link href="">Dress</Link>
+                  <Link href="/collections/dress">Dress</Link>
                 </div>
                 <div className="li">
-                  <Link href="">Tops</Link>
+                  <Link href="/collections/tops">Tops</Link>
                 </div>
                 <div className="li">
-                  <Link href="">Jackets and coats</Link>
+                  <Link href="/collections/jackets coats">
+                    Jackets and coats
+                  </Link>
                 </div>
                 <div className="li">
-                  <Link href="">Pants and Jeans</Link>
+                  <Link href="/collections/pants jeans">Pants and Jeans</Link>
                 </div>
                 <div className="li">
-                  <Link href="">Skirts</Link>
+                  <Link href="/collections/skirts">Skirts</Link>
                 </div>
               </div>
             </div>
@@ -119,22 +121,24 @@ export default function Page() {
 
               <div className="links_main_subMenu">
                 <div className="li">
-                  <Link href="">Shirts</Link>
+                  <Link href="/collections/shirts">Shirts</Link>
                 </div>
                 <div className="li">
-                  <Link href="">T-shirts & Polo</Link>
+                  <Link href="/collections/t-shirts">T-shirts & Polo</Link>
                 </div>
                 <div className="li">
-                  <Link href="">Jackets and Blazers</Link>
+                  <Link href="/collections/jackets and blazers">
+                    Jackets and Blazers
+                  </Link>
                 </div>
                 <div className="li">
-                  <Link href="">Jeans</Link>
+                  <Link href="/collections/jeans">Jeans</Link>
                 </div>
                 <div className="li">
-                  <Link href="">Shoes</Link>
+                  <Link href="/collections/shoes">Shoes</Link>
                 </div>
                 <div className="li">
-                  <Link href="">Pants</Link>
+                  <Link href="/collections/pants">Pants</Link>
                 </div>
               </div>
             </div>
