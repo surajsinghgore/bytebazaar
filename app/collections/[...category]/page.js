@@ -148,6 +148,7 @@ export default function Page() {
 
           {/* items container */}
           <div className={style.itemContainerBody}>
+            {/* card 1 */}
             <div className={style.itemCard}>
               <div className={style.itemCardImageContainer}>
                 <Image src="/dummy/img1.webp" alt="img1" layout="fill" />
@@ -204,6 +205,308 @@ export default function Page() {
                 </div>
               </div>
             </div>
+
+            {/* card 2 */}
+
+            <div className={style.itemCard}>
+              <div className={style.itemCardImageContainer}>
+                <Image src="/dummy/img2.webp" alt="img2" layout="fill" />
+                {/* menu on image */}
+                <div className={style.menuOnImage}>-17%</div>
+
+                {/* image drop down */}
+                <div className={style.imageDropDown}>
+                  <li title="Quick View">
+                    <Link href="">
+                      <FaRegEye />
+                    </Link>
+                  </li>
+                  <li title="Add to cart">
+                    <Link href="">
+                      <FaShoppingCart />
+                    </Link>
+                  </li>
+                  <li title="Add to wishlist">
+                    <Link href="">
+                      <FaHeart />
+                    </Link>
+                  </li>
+                </div>
+              </div>
+
+              <div className={style.productDesc}>
+                <h2>Z. Baby Bodysuits</h2>
+                <p>
+                  <span className={style.cutPrice}>Rs. 7,200.00</span>
+                  <span className={style.discount}>Rs. 6,000.00</span>
+                </p>
+
+                <div className={style.colors}>
+                   <div
+                    className={style.pink_color + " " + style.color}
+                    title="Pink"
+                  ></div>
+                  <div
+                    className={style.blue_color + " " + style.color}
+                    title="Blue"
+                  ></div>  <div
+                    className={style.color + " " + style.red_color}
+                    title="Red"
+                  ></div>
+                  <div
+                    className={style.green_color + " " + style.color}
+                    title="Green"
+                  ></div>
+               
+                  <div
+                    className={style.no_color + " " + style.color}
+                    title="More"
+                  >
+                    +1
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* card 3 */}
+            <div className={style.itemCard}>
+              <div className={style.itemCardImageContainer}>
+                <Image src="/dummy/img3.webp" alt="img3" layout="fill" />
+                {/* menu on image */}
+                <div className={style.menuOnImage}>-20%</div>
+
+                {/* image drop down */}
+                <div className={style.imageDropDown}>
+                  <li title="Quick View">
+                    <Link href="">
+                      <FaRegEye />
+                    </Link>
+                  </li>
+                  <li title="Add to cart">
+                    <Link href="">
+                      <FaShoppingCart />
+                    </Link>
+                  </li>
+                  <li title="Add to wishlist">
+                    <Link href="">
+                      <FaHeart />
+                    </Link>
+                  </li>
+                </div>
+              </div>
+
+              <div className={style.productDesc}>
+                <h2>Sa. Women Long T Shirt</h2>
+                <p>Rs. 1999.00</p>
+
+                <div className={style.colors}>
+                  <div
+                    className={style.color + " " + style.red_color}
+                    title="Red"
+                  ></div>
+                  <div
+                    className={style.blue_color + " " + style.color}
+                    title="Blue"
+                  ></div>
+                  <div
+                    className={style.green_color + " " + style.color}
+                    title="Green"
+                  ></div>
+                  <div
+                    className={style.pink_color + " " + style.color}
+                    title="Pink"
+                  ></div>
+                  <div
+                    className={style.no_color + " " + style.color}
+                    title="More"
+                  >
+                    +5
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* card 4 */}
+            <div className={style.itemCard}>
+              <div className={style.itemCardImageContainer}>
+                <Image src="/dummy/img4.webp" alt="img4" layout="fill" />
+                {/* menu on image */}
+                <div className={style.menuOnImage+' '+style.soldOut}>soldout</div>
+
+                {/* image drop down */}
+                <div className={style.imageDropDown}>
+                  <li title="Quick View">
+                    <Link href="">
+                      <FaRegEye />
+                    </Link>
+                  </li>
+                  <li title="Add to cart">
+                    <Link href="">
+                      <FaShoppingCart />
+                    </Link>
+                  </li>
+                  <li title="Add to wishlist">
+                    <Link href="">
+                      <FaHeart />
+                    </Link>
+                  </li>
+                </div>
+              </div>
+
+              <div className={style.productDesc}>
+                <h2>Ra. Men Large Polo T Shirt</h2>
+                <p>
+                  <span className={style.cutPrice}>Rs. 1,200.00</span>
+                  <span className={style.discount}>Rs. 1,000.00</span>
+                </p>
+
+                <div className={style.colors}>
+                   <div
+                    className={style.pink_color + " " + style.color}
+                    title="Pink"
+                  ></div>
+                  <div
+                    className={style.blue_color + " " + style.color}
+                    title="Blue"
+                  ></div>  <div
+                    className={style.color + " " + style.red_color}
+                    title="Red"
+                  ></div>
+                  <div
+                    className={style.green_color + " " + style.color}
+                    title="Green"
+                  ></div>
+               
+                  <div
+                    className={style.no_color + " " + style.color}
+                    title="More"
+                  >
+                    +3
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            {/* card 5 */}
+
+            <div className={style.itemCard}>
+              <div className={style.itemCardImageContainer}>
+                <Image src="/dummy/img5.webp" alt="img5" layout="fill" />
+                {/* menu on image */}
+             
+
+                {/* image drop down */}
+                <div className={style.imageDropDown}>
+                  <li title="Quick View">
+                    <Link href="">
+                      <FaRegEye />
+                    </Link>
+                  </li>
+                  <li title="Add to cart">
+                    <Link href="">
+                      <FaShoppingCart />
+                    </Link>
+                  </li>
+                  <li title="Add to wishlist">
+                    <Link href="">
+                      <FaHeart />
+                    </Link>
+                  </li>
+                </div>
+              </div>
+
+              <div className={style.productDesc}>
+                <h2>D. Fashionable Hat</h2>
+                <p>Rs. 200.00</p>
+
+                <div className={style.colors}>
+                  <div
+                    className={style.color + " " + style.red_color}
+                    title="Red"
+                  ></div>
+                  <div
+                    className={style.blue_color + " " + style.color}
+                    title="Blue"
+                  ></div>
+                  <div
+                    className={style.green_color + " " + style.color}
+                    title="Green"
+                  ></div>
+                  <div
+                    className={style.pink_color + " " + style.color}
+                    title="Pink"
+                  ></div>
+                  <div
+                    className={style.no_color + " " + style.color}
+                    title="More"
+                  >
+                    +1
+                  </div>
+                </div>
+              </div>
+            </div>
+
+{/* card 6 */}
+<div className={style.itemCard}>
+              <div className={style.itemCardImageContainer}>
+                <Image src="/dummy/img6.webp" alt="img6" layout="fill" />
+                {/* menu on image */}
+                <div className={style.menuOnImage}>new</div>
+
+                {/* image drop down */}
+                <div className={style.imageDropDown}>
+                  <li title="Quick View">
+                    <Link href="">
+                      <FaRegEye />
+                    </Link>
+                  </li>
+                  <li title="Add to cart">
+                    <Link href="">
+                      <FaShoppingCart />
+                    </Link>
+                  </li>
+                  <li title="Add to wishlist">
+                    <Link href="">
+                      <FaHeart />
+                    </Link>
+                  </li>
+                </div>
+              </div>
+
+              <div className={style.productDesc}>
+                <h2>Ca. Long T Shirt for Summer</h2>
+                <p>Rs. 999.00</p>
+
+                <div className={style.colors}>
+                <div
+                    className={style.green_color + " " + style.color}
+                    title="Green"
+                  ></div> <div
+                    className={style.pink_color + " " + style.color}
+                    title="Pink"
+                  ></div>
+                  <div
+                    className={style.blue_color + " " + style.color}
+                    title="Blue"
+                  ></div> <div
+                    className={style.color + " " + style.red_color}
+                    title="Red"
+                  ></div>
+                  
+                 
+                  <div
+                    className={style.no_color + " " + style.color}
+                    title="More"
+                  >
+                    +1
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
           </div>
         </div>
       </div>

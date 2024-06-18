@@ -1,0 +1,75 @@
+.adminLogin {
+  width: 100%;
+  display: flex;
+  margin: 2% 0;
+  background-color: rgb(255, 255, 255);
+}
+.adminLogin .left {
+  position: relative;
+  width: 50%;
+  height: 40vw;
+}
+.adminLogin .formSection {
+  list-style: none;
+  position: relative;
+  width: 50%;
+  height: 40vw;
+}
+
+.adminLogin .formSection h1 {
+  font-size: 1.9vw;
+  margin-top: 15%;
+  font-weight: 600;
+}
+.adminLogin .formSection p {
+  width: 80%;
+  font-size: 1vw;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.adminLogin .formSection li{
+  position: relative;
+}
+.adminLogin .formSection .title {
+  font-size: 1.2vw;
+}
+.adminLogin .formSection input {
+  width: 85%;
+  margin-top: 1%;
+  padding-left: 1%;
+  margin-bottom: 3%;
+  outline: none;
+  border: 1px solid rgb(51, 51, 51);
+  height: 35px;
+}
+
+.adminLogin .formSection input:focus {
+  outline: 1px solid rgb(0, 170, 255);
+  border: 1px solid rgb(0, 170, 255);
+}
+
+.adminLogin .formSection button {
+  width: 200px;
+  padding: 1% 0;
+  font-size: 1.2vw;
+  background: rgb(3, 179, 255);
+cursor: pointer;
+  color: white;
+  border: 2px solid rgb(192, 235, 253);
+  transition: all 0.5s;
+}
+.adminLogin .formSection button:hover{
+    background-color: rgb(16, 134, 185);
+  border: 2px solid rgb(129, 217, 254);
+padding-left: 120px;
+}
+
+
+.eye{
+  position: absolute;
+  top: 40%;
+  cursor: pointer;
+  font-size: 1.6vw;
+  color: rgb(82, 82, 82);
+right: 17%;
+}
