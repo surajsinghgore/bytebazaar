@@ -71,7 +71,7 @@ export default function Page() {
       {/* header logo */}
       <div className="icon">
         <Link href="/">
-          <Image src="/icon.jpg" alt="icon logo" layout="fill" />
+          <Image src="/icon.png" alt="icon logo" layout="fill" />
         </Link>
       </div>
       <span className="brand_title">
