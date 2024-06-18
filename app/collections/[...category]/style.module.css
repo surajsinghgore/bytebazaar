@@ -65,6 +65,93 @@ margin-top: 2%;
 
 /* mainCategoryPage */
 .mainCategoryPage{
-    background-color: red;
-    height: 200px;
+    margin-bottom: 5%;
+    display: flex;
+}
+/* left category */
+.mainCategoryPage .leftCategory{
+    width: 25%;
+    padding-left: 5%;
+}
+.mainCategoryPage .leftCategory .mainCategory{
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    list-style: none;
+    padding-bottom: 8%;
+    margin-bottom: 10%;
+}
+
+.mainCategoryPage .leftCategory .mainCategory .arrowDown{
+margin-left: 47%;
+    color: rgb(39, 39, 39);
+font-size: 1.4vw;
+}
+.mainCategoryPage .leftCategory .mainCategory h1{
+    font-size: 1.6vw;
+}
+.mainCategoryPage .leftCategory .mainCategory h1:hover{
+    cursor: pointer;
+}
+
+
+.mainCategoryPage .leftCategory .mainCategory .subCategories{
+max-height: 380px;
+overflow-x: hidden;
+margin-top: 2%;
+overflow-y: auto;
+
+}
+.mainCategoryPage .leftCategory .mainCategory .subCategories li{
+    width: 100%;
+    padding: 2% 0;
+margin-top: 1%;
+}
+
+.mainCategoryPage .leftCategory .mainCategory .subCategories li input{
+    margin-right: 2%;
+    width: 15px;
+    height: 15px;
+
+}
+
+
+.mainCategoryPage .leftCategory .mainCategory .subCategories li a{
+    color: #696969;
+}
+.mainCategoryPage .leftCategory .mainCategory .subCategories li a:hover,.mainCategoryPage .leftCategory .mainCategory .subCategories li a:hover .countNumber{
+    color: #028bcb;
+
+}
+
+
+.mainCategoryPage .leftCategory .mainCategory .subCategories::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  .countNumber{
+    color: #969696;
+  }
+  /* Track */
+  .mainCategoryPage .leftCategory .mainCategory .subCategories::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(242, 242, 242); 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  .mainCategoryPage .leftCategory .mainCategory .subCategories::-webkit-scrollbar-thumb {
+    background: rgb(188, 188, 188); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .mainCategoryPage .leftCategory .mainCategory .subCategories::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }
+
+/* right side */
+.mainCategoryPage .itemCategory{
+
+    width: 75%;
+
 }
