@@ -1,4 +1,6 @@
 "use client";
+import { cartPopUpState } from "../../redux/slice/CartPopUpModelState";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/legacy/image";
@@ -240,11 +242,9 @@ export default function Page() {
           )}
         </li>
         <li>
-          <i>
-            <Link href="/">
-              <span>0</span>
-              <FiShoppingCart />
-            </Link>
+          <i onClick={() => dispatch(cartPopUpState(true))}>
+            <span>0</span>
+            <FiShoppingCart />
           </i>
         </li>
       </div>
