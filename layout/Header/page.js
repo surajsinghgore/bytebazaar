@@ -91,111 +91,111 @@ export default function Page() {
 
           <div className="mainSubMenu">
             {/* women */}
-            <li>
+            <div className="mainSubContainer">
               <h3>Women's Fashion</h3>
 
               <div className="links_main_subMenu">
-                <li>
+                <div className="li">
                   <Link href="">Dress</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Tops</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Jackets and coats</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Pants and Jeans</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Skirts</Link>
-                </li>
+                </div>
               </div>
-            </li>
+            </div>
 
             {/* mens */}
-            <li>
+            <div className="mainSubContainer">
               <h3>Men's Fashion</h3>
 
               <div className="links_main_subMenu">
-                <li>
+                <div className="li">
                   <Link href="">Shirts</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">T-shirts & Polo</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Jackets and Blazers</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Jeans</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Shoes</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Pants</Link>
-                </li>
+                </div>
               </div>
-            </li>
+            </div>
 
             {/* accessories */}
-            <li>
+            <div className="mainSubContainer">
               <h3>Accessories</h3>
 
               <div className="links_main_subMenu">
-                <li>
+                <div className="li">
                   <Link href="">Bags and Purses</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Hat's and Cap</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Belts & Suspends</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Watches</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Jewelry</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Sunglasses</Link>
-                </li>
+                </div>
               </div>
-            </li>
+            </div>
 
             {/* electronics */}
-            <li>
+            <div className="mainSubContainer">
               <h3>Electronics</h3>
 
               <div className="links_main_subMenu">
-                <li>
+                <div className="li">
                   <Link href="">Smartphone</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Laptop</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Tablet</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Television</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Digital Camera</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Bluetooth Speaker</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Smart Light Bulb</Link>
-                </li>
-                <li>
+                </div>
+                <div className="li">
                   <Link href="">Gaming Console</Link>
-                </li>
+                </div>
               </div>
-            </li>
+            </div>
           </div>
         </li>
         <li>
