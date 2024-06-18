@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   icons: {
-    icon: "./favicon.png",
+    icon: "/icon.png"
   },
   title: "BYTE BAZAAR",
   description: "Byte BAZAAR E-Commerce platform",

@@ -29,6 +29,11 @@ font-weight: 600;
 .topCategory .description .path .mainPath a{
     color: black;
 }
+.topCategory .description .path .mainPath a:hover{
+    color: rgb(0, 157, 255);
+
+}
+
 .topCategory .description .path .arrowRight{
 font-size: 0.8vw;
 margin-top: 0.6%;
@@ -58,3 +63,8 @@ margin-top: 2%;
 
 
 
+/* mainCategoryPage */
+.mainCategoryPage{
+    background-color: red;
+    height: 200px;
+}

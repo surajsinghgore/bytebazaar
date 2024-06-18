@@ -9,12 +9,12 @@ export default function Page() {
    const getParams = useParams();
    const activeCategory=decodeURIComponent(getParams.category[0]);
   
-  return (
+  return (<>
     <div className={style.topCategory}>
     <div className={style.description}>
 <h1>Featured (T Shirt)</h1>
 <div className={style.path}>
-  <div className={style.mainPath}><Link href="">Home</Link></div>
+  <div className={style.mainPath}><Link href="/">Home</Link></div>
   <div className={style.arrowRight}><FaChevronRight /></div>
   <div className={style.parentPath}>
   Featured (T Shirt)
@@ -28,5 +28,12 @@ export default function Page() {
 
     </div>
     </div>
+
+<div className={style.mainCategoryPage}>
+
+</div>
+
+
+    </>
   )
 }
