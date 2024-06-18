@@ -1,0 +1,60 @@
+.topCategory{
+    display: flex;
+    background-color: rgb(237, 237, 237);
+    height: 350px;
+    width: 90%;
+    border-radius: 15px;
+    margin: 5% 5%;
+}
+
+.topCategory .description{
+    width: 70%;
+    padding-left: 3%;
+    height: 300px;
+}
+
+.topCategory .description h1{
+    margin-top: 10%;
+    margin-bottom: 2%;
+}
+
+.topCategory .description .path{
+    display: flex;
+    
+}
+.topCategory .description .path .mainPath{
+font-size: 1.2vw;
+font-weight: 600;
+}
+.topCategory .description .path .mainPath a{
+    color: black;
+}
+.topCategory .description .path .arrowRight{
+font-size: 0.8vw;
+margin-top: 0.6%;
+margin-left: 1%;
+}
+
+.topCategory .description .path .parentPath{
+color: rgb(1, 120, 232);
+margin-left: 1%;
+font-weight: 600;
+}
+
+.desc{
+    margin-top: 2%;
+    width: 98%;
+}
+.topCategory .image_section{
+    width: 23%;
+position: relative;
+height: 20vw;
+margin-left: 4%;
+margin-top: 2%;
+}
+.topCategory .image_section img{
+    border-radius: 10px;
+}
+
+
+
