@@ -1,15 +1,19 @@
 "use client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useRouter } from "next/navigation";
 import { IoSearch } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { clientLoginState } from "../../redux/slice/ClientLoginState";
 export default function Page() {
   const { push } = useRouter();
+  const dispatch = useDispatch();
+  const loginState = useSelector((state) => state.clientLoginState);
 
   const [loginStatus, setLoginStatus] = useState(false);
 
@@ -22,6 +26,7 @@ if(localStorage.getItem('clientLogin')){
   })
   if(res.status=="200"){
     push('/')
+    dispatch(clientLoginState(false));
     setLoginStatus(false);
     localStorage.removeItem('clientLogin')
     toast.success(`Client Logout Successfully`, {
@@ -52,9 +57,18 @@ if(localStorage.getItem('clientLogin')){
     // login user validate
     useEffect(() => {
       if (localStorage.getItem("clientLogin")) {
+       
         setLoginStatus(true);
+        dispatch(clientLoginState(true));
+      }else{
+        
+        setLoginStatus(false);
+        dispatch(clientLoginState(false));
       }
-    },[]);
+    },[loginState]);
+
+
+
   return (
     <header>
       {/* header logo */}

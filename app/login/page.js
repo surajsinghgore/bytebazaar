@@ -3,9 +3,18 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import style from "./style.module.css";
 import { useEffect, useState } from "react";
+
+
+import { useDispatch,useSelector } from "react-redux";
+import { clientLoginState } from "../../redux/slice/ClientLoginState";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-export default function page() {
+export default function Page() {
+  const dispatch = useDispatch();
+
+
+
+  
   const [preventPage,setPreventPage]=useState(false);
     const { push } = useRouter();
   const [formData, setFormData] = useState({
@@ -83,6 +92,7 @@ export default function page() {
       }
   
       if (res.status == "200") {
+        dispatch(clientLoginState(true));
         toast.success(serverPayload.message, {
           position: "bottom-right",
           autoClose: 2000,

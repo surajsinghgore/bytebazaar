@@ -15,14 +15,22 @@ export const metadata = {
   creator: "impactmindz tech solutions",
   publisher: "impactmindz tech solutions"
 };
+
+
+
+// redux provider import
+import { Providers } from "../redux/Provider";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+      <Providers>
+
       <Header />
       {children}
       <Footer />
 
+      </Providers>
       </body>
     </html>
   );
