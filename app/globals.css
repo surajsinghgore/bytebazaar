@@ -186,9 +186,8 @@ header li:hover .mainSubMenu {
   display: flex !important;
 }
 
-
 /* cart page ui */
-.cart_container{
+.cart_container {
   position: absolute;
   top: 0;
   left: 0;
@@ -199,13 +198,13 @@ header li:hover .mainSubMenu {
   height: 100vh;
 }
 
-.bgBlur{
+.bgBlur {
   width: 72%;
   opacity: 0.4;
   height: 100vh;
-background-color: rgb(1, 1, 1);
+  background-color: rgb(1, 1, 1);
 }
-.cart_page{
+.cart_page {
   position: absolute;
   top: 0;
   right: 0;
@@ -215,10 +214,10 @@ background-color: rgb(1, 1, 1);
   width: 30%;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 5px 12px 4px rgb(234, 234, 234);
+  background-color: #ffffff;
+  box-shadow: 0px 5px 12px 4px rgb(82, 82, 82);
 }
-.cart_page h2{
+.cart_page h2 {
   position: relative;
   padding-top: 6%;
   font-weight: 500;
@@ -227,43 +226,112 @@ background-color: rgb(1, 1, 1);
   margin-top: 5%;
   margin-left: 10%;
   color: rgb(69, 69, 69);
-  width:80%;
+  width: 80%;
   border-bottom: 1px solid rgb(237, 237, 237);
 }
-.cart_page h2 .close{
+.cart_page h2 .close {
   position: absolute;
   top: 45%;
-cursor: pointer;
-  right: 10%;
+  cursor: pointer;
+  right: 1%;
 }
 
-
-.item_container{
+.item_container {
   width: 80%;
-margin-left: 10%;
-margin-top: 3%;
-height: 28vw;
-overflow-x: hidden;
-overflow-y: auto;
-background-color: rgb(235, 235, 235);
+  margin-left: 10%;
+  margin-top: 5%;
+  height: 28vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.item_container li {
+  padding-top: 5%;
+  position: relative;
+padding-bottom: 5%;
+  border-bottom: 1px solid rgb(223, 223, 223);
+  list-style: none;
+  display: flex;
 }
 
+.item_container li .item_image {
+  width: 25%;
+  position: relative;
+  margin-left: 2%;
+  height: 6.2vw;
+}
+.item_container li:last-child{
+  border: none;
+}
+.deleteItems {
+  position: absolute;
+  top: -4%;
+  z-index: 99;
+  cursor: pointer;
+  left: -4%;
+  font-size: 1vw;
+  padding: 2% 4%;
+  box-shadow: 0px 0px 5px 1px rgb(224, 224, 224);
+  border-radius: 60px;
+  background-color: rgb(255, 255, 255);
+}
+.deleteItems:hover{
+  color: white;
+  background-color: red;
+}
 
-.total_sum{
+.item_container li .item_image img {
+  border-radius: 10px;
+}
+
+.item_container li .item_details {
+  width: 70%;
+  margin-left: 2%;
+  padding-left: 4%;
+}
+.item_container li .item_details h1 {
+  font-size: 1vw;
+  margin-top: 4%;
+}
+.item_container li .item_details p {
+  font-size: 1vw;
+  margin-top: 4%;
+}
+
+.item_container::-webkit-scrollbar {
+  width: 2px;
+}
+
+.item_container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(242, 242, 242);
+  border-radius: 10px;
+}
+
+/* Handle */
+.item_container::-webkit-scrollbar-thumb {
+  background: rgb(188, 188, 188);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.item_container::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+.total_sum {
   width: 80%;
-padding: 3% 0;
-margin-top: 3%;
+  padding: 3% 0;
+  margin-top: 3%;
   margin-left: 10%;
   border-top: 1px solid rgb(237, 237, 237);
   height: 50px;
   border-bottom: 1px solid rgb(237, 237, 237);
 }
-.total_sum h1{
+.total_sum h1 {
   float: left;
   width: 50%;
   font-size: 1.3vw;
 }
-.total_sum p{
+.total_sum p {
   float: right;
   width: 50%;
   text-align: right;
@@ -271,13 +339,13 @@ margin-top: 3%;
   color: rgb(1, 120, 167);
 }
 
-.cartButton{
+.cartButton {
   width: 80%;
   margin-top: 6%;
   margin-left: 10%;
 }
 
-.cartButton button{
+.cartButton button {
   width: 48%;
   margin-right: 2%;
   background-color: rgb(0, 116, 161);
@@ -289,10 +357,10 @@ margin-top: 3%;
   font-size: 1.2vw;
   transition: all 0.2s;
 }
-.cartButton button a{
+.cartButton button a {
   color: white;
 }
 
-.cartButton button:hover{
+.cartButton button:hover {
   background-color: rgb(0, 73, 102);
 }
