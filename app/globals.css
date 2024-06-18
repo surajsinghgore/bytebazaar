@@ -9,6 +9,7 @@ a {
 /* header section styling */
 
 header {
+  position: relative;
   display: flex;
   z-index: 999;
   padding-bottom: 2%;
@@ -124,4 +125,64 @@ cursor: pointer;
 
 .userMenu:hover .userSubMenu {
   display: block !important;
+}
+
+
+.downArrow{
+  color: rgb(23, 23, 23);
+  font-size: 1vw;
+}
+
+
+
+.mainSubMenu{
+  display: none !important;
+  position: absolute;
+  top: 74%;
+  left: 0;
+  height: 420px;
+  width: 96%;
+  padding-left: 2%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 25px 2px rgb(231, 231, 231);
+  border-radius: 20px;
+  display: flex;
+  margin-left: 2%;
+}
+
+.mainSubMenu li{
+  width: 25% ;
+}
+.mainSubMenu li h3{
+  margin-top: -5%;
+  padding-bottom: 4%;
+  width: 90%;
+  font-size: 1.2vw;
+margin-left: 4%;
+color: #3b3b3b;
+  border-bottom-width: 80%;
+  border-bottom: 1px solid rgb(227, 227, 227);
+}
+
+
+.links_main_subMenu{
+  list-style: none;
+}
+.links_main_subMenu li{
+  width: 100%;
+  padding-left: 4%;
+}
+.links_main_subMenu li a{
+  font-weight: 400;
+  font-size: 1vw;
+}
+.links_main_subMenu li a:hover{
+  color: #02a3d9;
+
+}
+
+
+header li:hover .mainSubMenu{
+display: flex !important;
+
 }
