@@ -247,7 +247,7 @@ header li:hover .mainSubMenu {
 .item_container li {
   padding-top: 5%;
   position: relative;
-padding-bottom: 5%;
+  padding-bottom: 5%;
   border-bottom: 1px solid rgb(223, 223, 223);
   list-style: none;
   display: flex;
@@ -259,7 +259,7 @@ padding-bottom: 5%;
   margin-left: 2%;
   height: 6.2vw;
 }
-.item_container li:last-child{
+.item_container li:last-child {
   border: none;
 }
 .deleteItems {
@@ -274,7 +274,7 @@ padding-bottom: 5%;
   border-radius: 60px;
   background-color: rgb(255, 255, 255);
 }
-.deleteItems:hover{
+.deleteItems:hover {
   color: white;
   background-color: red;
 }
@@ -344,9 +344,11 @@ padding-bottom: 5%;
   margin-top: 6%;
   margin-left: 10%;
 }
-
-.cartButton button {
+.cartButton a {
   width: 48%;
+}
+.cartButton a button {
+  width: 47.3%;
   margin-right: 2%;
   background-color: rgb(0, 116, 161);
   height: 45px;

@@ -10,10 +10,9 @@ export default function Page() {
   const popState = useSelector((state) => state.cartPopUpState);
   const dispatch = useDispatch();
 
-
-  const closePop=()=>{
+  const closePop = () => {
     dispatch(cartPopUpState(false));
-  }
+  };
   return (
     <>
       {popState.state ? (
@@ -22,7 +21,11 @@ export default function Page() {
           <div className="cart_page">
             <h2>
               Cart{" "}
-              <span className="close" title="close cart" onClick={()=>closePop()}>
+              <span
+                className="close"
+                title="close cart"
+                onClick={() => closePop()}
+              >
                 <IoMdClose />
               </span>
             </h2>
@@ -49,12 +52,13 @@ export default function Page() {
             </div>
 
             <div className="cartButton">
-              <button>
-                <Link href="/cart"> View Cart</Link>
-              </button>
-              <button>
-                <Link href="">Checkout</Link>
-              </button>
+              <Link href="/cart">
+                <button>View Cart</button>
+              </Link>
+              <Link href="/checkout">
+                {" "}
+                <button>Checkout</button>
+              </Link>
             </div>
           </div>
         </div>

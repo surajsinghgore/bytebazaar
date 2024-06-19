@@ -1,0 +1,119 @@
+.checkoutContainer {
+  display: flex;
+}
+/* form Container */
+.checkoutContainer .formContainer {
+  width: 50%;
+  display: flex;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  margin-left: 200px;
+  border-right: 1px solid rgb(199, 199, 199);
+}
+.checkoutContainer .formContainer h1 {
+  font-weight: 500;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 1.5vw;
+}
+.checkoutContainer .formContainer p {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 0.8vw;
+  color: rgb(89, 89, 89);
+}
+.checkoutContainer .formContainer .fullSizeInput {
+  width: 520px;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 2.3% 2%;
+  border: 1px solid rgb(221, 221, 221);
+  font-size: 15px;
+  outline: none;
+  text-transform: capitalize;
+}
+
+.checkoutContainer .formContainer .xSmallSizeInput {
+  width: 160px;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 2.3% 2%;
+  border: 1px solid rgb(221, 221, 221);
+  margin-right: 3%;
+  outline: none;
+  padding-top: 19px;
+  text-transform: capitalize;
+}
+.checkoutContainer .formContainer .smallSizeInput {
+  width: 250px;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 2.3% 2%;
+  border: 1px solid rgb(221, 221, 221);
+  font-size: 15px;
+  margin-right: 3%;
+  outline: none;
+  text-transform: capitalize;
+}
+.country {
+  position: relative;
+}
+.checkoutContainer .formContainer label {
+  position: absolute;
+  top: 12px;
+  color: rgb(105, 105, 105);
+  font-size: 0.8vw;
+  left: 15px;
+}
+
+.checkoutContainer .formContainer input::-webkit-outer-spin-button,
+.checkoutContainer .formContainer input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.checkoutContainer .formContainer input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* item container  */
+.checkoutContainer .itemContainer {
+  width: 50%;
+}
+
+/* payment */
+.payment {
+margin: 2% 0;
+    width: 85%;
+border-radius: 4px;
+  list-style: none;
+}
+
+.payment li {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgb(125, 125, 125);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding:15px 20px;
+    
+}
+.payment li span{
+    padding-left: 2%;
+}
+
+.payment li .cardDetails{
+    height: 50px;
+    width: 100%;
+    border: 1px solid rgb(125, 125, 125);
+}
+
+.cardDetails{
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-top: none !important;
+}
+
+.formInput{
+    width: 100%;
+}

@@ -14,15 +14,13 @@
   margin-top: 5%;
   margin-left: 10%;
   border: 1px solid rgb(231, 231, 231);
- 
 }
 .cartModelContainer .cartItemParent .itemSection {
   border-bottom: 1px solid rgb(231, 231, 231);
   display: flex;
 }
 .cartModelContainer .cartItemParent .itemSection:last-child {
-  border-bottom:none !important;
-
+  border-bottom: none !important;
 }
 
 .cartModelContainer .cartItemParent .itemSection .itemImg {
@@ -81,8 +79,8 @@
   width: 50px;
   font-weight: 600;
   font-size: 1.3vw;
-  border-top: 1px  solid rgb(152, 152, 152);
-  border-bottom: 1px  solid rgb(152, 152, 152);
+  border-top: 1px solid rgb(152, 152, 152);
+  border-bottom: 1px solid rgb(152, 152, 152);
 }
 .qtyControl .max {
   height: 50px;
@@ -94,15 +92,15 @@
   font-size: 1.5vw;
   border: 1px solid rgb(152, 152, 152);
 }
-.qtyControl .max:hover{
-    cursor: pointer;
-    color: white;
-    background-color: rgb(152, 152, 152);
+.qtyControl .max:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(152, 152, 152);
 }
-.qtyControl .min:hover{
-    cursor: pointer;
-    color: white;
-    background-color: rgb(152, 152, 152);
+.qtyControl .min:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(152, 152, 152);
 }
 /* bottom btn */
 .cartModelContainer .bottomBtn {
@@ -123,21 +121,18 @@
   margin-right: 2%;
   transition: all 0.4s;
 }
-.remove{
-    padding-left: 5%;
-    padding-top: 7%;
-    color: black;
-    width: 15%;
-    font-size: 1.6vw;
+.remove {
+  padding-left: 5%;
+  padding-top: 7%;
+  color: black;
+  width: 15%;
+  font-size: 1.6vw;
 }
-.remove i:hover{
-    cursor: pointer;
+.remove i:hover {
+  cursor: pointer;
 
-    color: rgb(82, 82, 82) !important;
-
+  color: rgb(82, 82, 82) !important;
 }
-
-
 
 .cartModelContainer .bottomBtn button:hover {
   background-color: black;
@@ -251,4 +246,39 @@
 }
 .cartModelContainer .bottomSection .right button:hover {
   background-color: black;
+}
+
+/* NoItemInCart */
+.NoItemInCart {
+  padding-top: 4%;
+  padding-left: 5%;
+  height: 500px;
+}
+.NoItemInCart h2 {
+  padding-top: 3%;
+  font-size: 2vw;
+  font-weight: 600;
+}
+.NoItemInCart h3 {
+  padding-top: 1%;
+  font-size: 2vw;
+  font-weight: 500;
+}
+.NoItemInCart h3 {
+  padding-top: 1%;
+  font-size: 2vw;
+  font-weight: 500;
+}
+
+.NoItemInCart p {
+  padding-top: 1%;
+  font-size: 1.2vw;
+  font-weight: 400;
+}
+.NoItemInCart p a {
+  text-decoration: underline;
+  color: rgb(53, 53, 53);
+}
+.NoItemInCart p a:hover {
+  color: rgb(3, 137, 247);
 }
