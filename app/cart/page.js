@@ -1,11 +1,97 @@
+import Image from "next/legacy/image";
 import style from "./style.module.css";
-
+import Link from "next/link";
+import { IoMdClose } from "react-icons/io";
 export default function page() {
   return (
     <div className={style.cartModelContainer}>
       <h1>Your Shopping Cart</h1>
 
-      <div className={style.cartItemParent}></div>
+
+{/* cart items section */}
+      <div className={style.cartItemParent}>
+{/* item1 */}
+        <div className={style.itemSection}>
+        {/* img */}
+        <div className={style.itemImg}>
+<Image src="/dummy/img1.webp" alt="dummy" layout="fill"/>
+        </div>
+        {/* productName */}
+        <div className={style.productName}>
+<Link href="">W. Men Formal T-shirt</Link>
+        </div>
+
+        {/* price */}
+
+        <div className={style.price}>
+        Rs. 1,700.00
+        </div>
+{/* qty control */}
+        <div className={style.qtyControl}>
+<div className={style.min}>-</div>
+<div className={style.number}>2</div>
+<div className={style.max}>+</div>
+        </div>
+
+
+        {/* total */}
+        
+        <div className={style.price}>
+        Rs. 1,700.00
+        </div>
+
+        {/* remove  */}
+        <div className={style.remove} title="remove">
+        <i>
+        <IoMdClose />
+
+        </i>
+        </div>
+        </div>
+
+
+
+        <div className={style.itemSection}>
+        {/* img */}
+        <div className={style.itemImg}>
+<Image src="/dummy/img1.webp" alt="dummy" layout="fill"/>
+        </div>
+        {/* productName */}
+        <div className={style.productName}>
+<Link href="">W. Men Formal T-shirt</Link>
+        </div>
+
+        {/* price */}
+
+        <div className={style.price}>
+        Rs. 1,700.00
+        </div>
+{/* qty control */}
+        <div className={style.qtyControl}>
+<div className={style.min}>-</div>
+<div className={style.number}>2</div>
+<div className={style.max}>+</div>
+        </div>
+
+
+        {/* total */}
+        
+        <div className={style.price}>
+        Rs. 1,700.00
+        </div>
+
+        {/* remove  */}
+        <div className={style.remove} title="remove">
+        <i>
+        <IoMdClose />
+
+        </i>
+        </div>
+        </div>
+      </div>
+
+
+
 
       <div className={style.bottomBtn}>
         <button>Continue Shopping</button>
