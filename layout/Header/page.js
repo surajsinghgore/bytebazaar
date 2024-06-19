@@ -1,6 +1,6 @@
 "use client";
 import { cartPopUpState } from "../../redux/slice/CartPopUpModelState";
-
+import { usePathname } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/legacy/image";
@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clientLoginState } from "../../redux/slice/ClientLoginState";
 export default function Page() {
+  const pathname = usePathname();
   const { push } = useRouter();
   const dispatch = useDispatch();
   const loginState = useSelector((state) => state.clientLoginState);
@@ -65,6 +66,11 @@ export default function Page() {
       dispatch(clientLoginState(false));
     }
   }, [loginState]);
+
+  // path change open cart model disable
+  useEffect(() => {
+    dispatch(cartPopUpState(false));
+  }, [pathname]);
 
   return (
     <header>

@@ -50,7 +50,7 @@ export default function Page() {
 
             <div className="cartButton">
               <button>
-                <Link href=""> View Cart</Link>
+                <Link href="/cart"> View Cart</Link>
               </button>
               <button>
                 <Link href="">Checkout</Link>
