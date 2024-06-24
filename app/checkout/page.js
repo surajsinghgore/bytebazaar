@@ -60,21 +60,17 @@ export default function page() {
 
           <h1>Payment</h1>
           <p>All transactions are secure and encrypted.</p>
-          
+
           <div className={style.payment}>
             <li>
-               <input type="radio" id="online"/>
-               <span>Credit card</span>
-               
+              <input type="radio" id="online" />
+              <span>Credit card</span>
             </li>
             <li className={style.cardDetails}>
-               <div className={style.formInput}>
-               <input type="text" placeholder="Card number"/>
-
-               </div>
-
-               
-               
+              <div className={style.formInput}>
+                <label htmlFor="cardNumber">Country/Region</label>
+                <input type="text" placeholder="Card number" id="cardNumber" />
+              </div>
             </li>
           </div>
         </form>

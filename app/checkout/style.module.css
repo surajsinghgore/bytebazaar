@@ -115,5 +115,20 @@ border-radius: 4px;
 }
 
 .formInput{
+  position: relative;
     width: 100%;
+}
+.formInput label {
+  position: absolute;
+  bottom: 0px;
+  color: rgb(105, 105, 105);
+  font-size: 0.8vw;
+  left: 1px;
+  background-color: red;
+}
+
+.formInput input{
+  width: 100%;
+  margin-top: 100px;
+  padding: 10px 0;
 }
