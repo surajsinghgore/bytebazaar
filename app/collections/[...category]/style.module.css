@@ -98,6 +98,10 @@
   margin-top: 2%;
   overflow-y: auto;
 }
+.mainCategoryPage .leftCategory .mainCategory .subCategories label{
+  cursor: pointer;
+}
+
 .mainCategoryPage .leftCategory .mainCategory .subCategories li {
   width: 100%;
   padding: 2% 0;

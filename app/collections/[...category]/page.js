@@ -15,7 +15,7 @@ export default function Page() {
   const activeCategory = decodeURIComponent(getParams.category[0]);
   const [data, setData] = useState([]);
   const [backupData, setBackupData] = useState([]);
-    const [selectedValues, setSelectedValues] = useState([]);
+  const [selectedBrandValues, setBrandSelectedValues] = useState([]);
   const [loaderState, setLoaderState] = useState(false);
   const [totalCount, setTotalCount] = useState({
     smartphone: 0,
@@ -156,21 +156,38 @@ export default function Page() {
   };
 
   const handleCheckboxChange = (event) => {
+    setLoaderState(true);
+    setTimeout(() => {
+      setLoaderState(false);
+    }, 1000);
+
     const value = event.target.value;
-    
+
     if (event.target.checked) {
-      console.log('ss')
-      setSelectedValues([...selectedValues, value]);
+      setBrandSelectedValues([...selectedBrandValues, value]);
     } else {
-      
-      console.log('cc')
-        setSelectedValues(selectedValues.filter(item => item !== value));
+      setBrandSelectedValues(
+        selectedBrandValues.filter((item) => item !== value)
+      );
     }
-};
+  };
 
   useEffect(() => {
     fetchAllProductData();
   }, []);
+
+  // handle brand filter
+  useEffect(() => {
+    if (selectedBrandValues.length !== 0) {
+      let newArray = [];
+      selectedBrandValues.map((item) => {
+        newArray.push(...filterDataUsingBrandName(backupData, item));
+      });
+      setData(newArray);
+    } else {
+      setData(backupData);
+    }
+  }, [selectedBrandValues]);
   return (
     <>
       <div className={style.topCategory}>
@@ -245,25 +262,43 @@ export default function Page() {
             </h1>
             <div className={style.subCategories}>
               <li>
-                <input type="checkbox" name="brandName" value="apple"  checked={selectedValues.includes('apple')}
-                onChange={handleCheckboxChange}/>
+                <input
+                  type="checkbox"
+                  name="brandName"
+                  value="apple"
+                  checked={selectedBrandValues.includes("apple")}
+                  onChange={handleCheckboxChange}
+                />
                 Apple{" "}
                 <span className={style.countNumber}> ({totalCount.apple})</span>
               </li>
 
               <li>
-                <input type="checkbox" name="brandName" value="samsung" checked={selectedValues.includes('samsung')}
-                onChange={handleCheckboxChange} />
-                Samsung{" "}
-                <span className={style.countNumber}>
-                  {" "}
-                  ({totalCount.samsung})
-                </span>
+                <input
+                  type="checkbox"
+                  name="brandName"
+                  value="samsung"
+                  id="samsung"
+                  checked={selectedBrandValues.includes("samsung")}
+                  onChange={handleCheckboxChange}
+                />
+                <label htmlFor="samsung">
+                  Samsung{" "}
+                  <span className={style.countNumber}>
+                    {" "}
+                    ({totalCount.samsung})
+                  </span>
+                </label>
               </li>
 
               <li>
-                <input type="checkbox" name="brandName" value="google" checked={selectedValues.includes('google')}
-                onChange={handleCheckboxChange}/>
+                <input
+                  type="checkbox"
+                  name="brandName"
+                  value="google"
+                  checked={selectedBrandValues.includes("google")}
+                  onChange={handleCheckboxChange}
+                />
                 google{" "}
                 <span className={style.countNumber}>
                   {" "}
@@ -319,71 +354,77 @@ export default function Page() {
         </div>
 
         <div className={style.itemCategory}>
-          {loaderState && <Loader />}
+          {loaderState ? (
+            <Loader />
+          ) : (
+            <>
+              {/* top bar */}
+              <div className={style.topBar}>
+                <div className={style.search}>
+                  <select>
+                    <option value="manual">Filter</option>
+                    <option value="title-ascending">Alphabetically, A-Z</option>
+                    <option value="title-descending">
+                      Alphabetically, Z-A
+                    </option>
+                    <option value="price-ascending">Price, low to high</option>
+                    <option value="price-descending">Price, high to low</option>
+                  </select>
+                </div>
 
-          {/* top bar */}
-          <div className={style.topBar}>
-            <div className={style.search}>
-              <select>
-                <option value="manual">Filter</option>
-                <option value="title-ascending">Alphabetically, A-Z</option>
-                <option value="title-descending">Alphabetically, Z-A</option>
-                <option value="price-ascending">Price, low to high</option>
-                <option value="price-descending">Price, high to low</option>
-              </select>
-            </div>
+                <div className={style.showingResult}>
+                  Showing 1 - {data.length} of {data.length} result
+                </div>
+              </div>
 
-            <div className={style.showingResult}>
-              Showing 1 - {data.length} of {data.length} result
-            </div>
-          </div>
+              {/* items container */}
+              <div className={style.itemContainerBody}>
+                {data.length != 0 && (
+                  <>
+                    {data.map((item) => {
+                      return (
+                        <div className={style.itemCard} key={item._id}>
+                          <div className={style.itemCardImageContainer}>
+                            <Image
+                              src={item.image}
+                              alt={item.image}
+                              layout="fill"
+                            />
+                            {/* menu on image */}
+                            <div className={style.menuOnImage}>New</div>
 
-          {/* items container */}
-          <div className={style.itemContainerBody}>
-            {data.length != 0 && (
-              <>
-                {data.map((item) => {
-                  return (
-                    <div className={style.itemCard} key={item._id}>
-                      <div className={style.itemCardImageContainer}>
-                        <Image
-                          src={item.image}
-                          alt={item.image}
-                          layout="fill"
-                        />
-                        {/* menu on image */}
-                        <div className={style.menuOnImage}>New</div>
+                            {/* image drop down */}
+                            <div className={style.imageDropDown}>
+                              <li title="Quick View">
+                                <Link href="">
+                                  <FaRegEye />
+                                </Link>
+                              </li>
+                              <li title="Add to cart">
+                                <Link href="">
+                                  <FaShoppingCart />
+                                </Link>
+                              </li>
+                              <li title="Add to wishlist">
+                                <Link href="">
+                                  <FaHeart />
+                                </Link>
+                              </li>
+                            </div>
+                          </div>
 
-                        {/* image drop down */}
-                        <div className={style.imageDropDown}>
-                          <li title="Quick View">
-                            <Link href="">
-                              <FaRegEye />
-                            </Link>
-                          </li>
-                          <li title="Add to cart">
-                            <Link href="">
-                              <FaShoppingCart />
-                            </Link>
-                          </li>
-                          <li title="Add to wishlist">
-                            <Link href="">
-                              <FaHeart />
-                            </Link>
-                          </li>
+                          <div className={style.productDesc}>
+                            <h2>{item.name}</h2>
+                            <p>Rs. {item.price}</p>
+                          </div>
                         </div>
-                      </div>
-
-                      <div className={style.productDesc}>
-                        <h2>{item.name}</h2>
-                        <p>Rs. {item.price}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </>
-            )}
-          </div>
+                      );
+                    })}
+                  </>
+                )}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>
