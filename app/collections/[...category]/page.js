@@ -16,6 +16,7 @@ export default function Page() {
   const [data, setData] = useState([]);
   const [backupData, setBackupData] = useState([]);
   const [selectedBrandValues, setBrandSelectedValues] = useState([]);
+  const [selectedPriceValues, setPriceSelectedValues] = useState([]);
   const [loaderState, setLoaderState] = useState(false);
   const [totalCount, setTotalCount] = useState({
     smartphone: 0,
@@ -155,6 +156,7 @@ export default function Page() {
     }
   };
 
+  // handle check box brand name
   const handleCheckboxChange = (event) => {
     setLoaderState(true);
     setTimeout(() => {
@@ -171,7 +173,23 @@ export default function Page() {
       );
     }
   };
+  // handle price filter checkbox
+  const handlePriceCheckboxChange = (event) => {
+    setLoaderState(true);
+    setTimeout(() => {
+      setLoaderState(false);
+    }, 1000);
 
+    const value = event.target.value;
+
+    if (event.target.checked) {
+      setPriceSelectedValues([...selectedPriceValues, value]);
+    } else {
+      setPriceSelectedValues(
+        selectedPriceValues.filter((item) => item !== value)
+      );
+    }
+  };
   useEffect(() => {
     fetchAllProductData();
   }, []);
@@ -188,6 +206,47 @@ export default function Page() {
       setData(backupData);
     }
   }, [selectedBrandValues]);
+
+  // handle price range change
+  useEffect(() => {
+
+    if (selectedPriceValues.length !== 0) {
+      let newArray = [];
+
+      selectedPriceValues.map((item) => {
+  
+        if (item === "lac") {
+          const DataReturn = backupData.filter(
+            (item) => item.price > 100000
+          );
+          newArray.push(...DataReturn);
+        }
+        if (item === "large") {
+          const DataReturn = backupData.filter((item)=>
+            item.price >= 50000 && item.price <= 99999
+          );
+          newArray.push(...DataReturn);
+        }
+        if (item === "medium") {
+          const DataReturn = backupData.filter(
+            (item) => item.price >= 20000 && item.price <= 49999
+          );
+          newArray.push(...DataReturn);
+        }
+        if (item === "small") {
+          const DataReturn = backupData.filter(
+            (item) => item.price <= 19999
+          );
+          newArray.push(...DataReturn);
+        }
+       
+      });
+
+     setData(newArray)
+    }else{
+      setData(backupData)
+    }
+  }, [selectedPriceValues]);
   return (
     <>
       <div className={style.topCategory}>
@@ -266,11 +325,15 @@ export default function Page() {
                   type="checkbox"
                   name="brandName"
                   value="apple"
+                  id="apple"
                   checked={selectedBrandValues.includes("apple")}
                   onChange={handleCheckboxChange}
                 />
+                <label htmlFor="apple">
+
                 Apple{" "}
                 <span className={style.countNumber}> ({totalCount.apple})</span>
+                </label>
               </li>
 
               <li>
@@ -296,14 +359,18 @@ export default function Page() {
                   type="checkbox"
                   name="brandName"
                   value="google"
+                  id="google"
                   checked={selectedBrandValues.includes("google")}
                   onChange={handleCheckboxChange}
                 />
+                <label htmlFor="google">
+
                 google{" "}
                 <span className={style.countNumber}>
                   {" "}
                   ({totalCount.google})
                 </span>
+                </label>
               </li>
             </div>
           </div>
@@ -317,37 +384,73 @@ export default function Page() {
             </h1>
             <div className={style.subCategories}>
               <li>
-                <input type="checkbox" />
-                10000+{" "}
-                <span className={style.countNumber}>
-                  {" "}
-                  ({totalCount.greaterThanLac})
-                </span>
+                <input
+                  type="checkbox"
+                  name="price"
+                  value="lac"
+                  id="lac"
+                  checked={selectedPriceValues.includes("lac")}
+                  onChange={handlePriceCheckboxChange}
+                />
+
+                <label htmlFor="lac">
+                  10000+{" "}
+                  <span className={style.countNumber}>
+                    ({totalCount.greaterThanLac})
+                  </span>
+                </label>
               </li>
 
               <li>
-                <input type="checkbox" />
-                50000 - 99999{" "}
-                <span className={style.countNumber}>
-                  {" "}
-                  ({totalCount.largeRange})
-                </span>
+                <input
+                  type="checkbox"
+                  name="price"
+                  value="large"
+                  id="large"
+                  checked={selectedPriceValues.includes("large")}
+                  onChange={handlePriceCheckboxChange}
+                />
+                <label htmlFor="large">
+                  50000 - 99999{" "}
+                  <span className={style.countNumber}>
+                    {" "}
+                    ({totalCount.largeRange})
+                  </span>
+                </label>
               </li>
               <li>
-                <input type="checkbox" />
-                20000 - 49999{" "}
-                <span className={style.countNumber}>
-                  {" "}
-                  ({totalCount.mediumRange})
-                </span>
+                <input
+                  type="checkbox"
+                  name="price"
+                  value="medium"
+                  id="medium"
+                  checked={selectedPriceValues.includes("medium")}
+                  onChange={handlePriceCheckboxChange}
+                />
+                <label htmlFor="medium">
+                  20000 - 49999{" "}
+                  <span className={style.countNumber}>
+                    {" "}
+                    ({totalCount.mediumRange})
+                  </span>
+                </label>
               </li>
               <li>
-                <input type="checkbox" />
-                19999-{" "}
-                <span className={style.countNumber}>
-                  {" "}
-                  ({totalCount.smallRange})
-                </span>
+                <input
+                  type="checkbox"
+                  name="price"
+                  value="small"
+                  id="small"
+                  checked={selectedPriceValues.includes("small")}
+                  onChange={handlePriceCheckboxChange}
+                />
+                <label htmlFor="small">
+                  19999-{" "}
+                  <span className={style.countNumber}>
+                    {" "}
+                    ({totalCount.smallRange})
+                  </span>
+                </label>
               </li>
             </div>
           </div>
