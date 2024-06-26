@@ -204,13 +204,17 @@
   margin-bottom: 5%;
   width: 28%;
   margin-right: 3%;
+  padding: 10px 10px;
+  box-shadow: 0px 0px 12px 2px rgb(243, 243, 243);
 }
 
 .itemContainerBody .itemCard .itemCardImageContainer {
   position: relative;
   cursor: pointer;
   filter: saturate(0.8);
-  width: 100%;
+
+  width: 90%;
+  margin: auto;
   height: 21vw;
 }
 .itemContainerBody .itemCard:hover .itemCardImageContainer {
