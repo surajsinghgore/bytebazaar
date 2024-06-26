@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useCart } from "react-use-cart";
 import { cartPopUpState } from "../../redux/slice/CartPopUpModelState";
 import Image from "next/image";
-import Link from "next/link";import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import React from "react";
+import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 export default function Page() {
@@ -17,7 +15,7 @@ export default function Page() {
     dispatch(cartPopUpState(false));
   };
 
-  const {cartTotal , removeItem,items } = useCart();
+  const { cartTotal, removeItem, items } = useCart();
 
   const removeFromCart = (id, name) => {
     removeItem(id);
@@ -49,33 +47,44 @@ export default function Page() {
             </h2>
 
             <div className="item_container">
-            {/* cart item image */}
-            {items.length!=0 ? <>
-              {items.map((item)=>{
-                return <li key={item.id}>
-                <div className="item_image">
-                  <div className="deleteItems" title="delete" onClick={()=>removeFromCart(item.id,item.productName)}>
-                    <MdClose />
-                  </div>
-                  <Image src={item.productImage} alt={item.productImage} layout="fill" />
-                </div>
-                <div className="item_details">
-                  <h1>{item.productName}</h1>
-                  <p> {item.qtyBook} x Rs. {item.qtyBook*item.price}</p>
-                </div>
-              </li>
-              })}
-            </>:<>
-
-            <li >
-                cart is empty
-              </li>
-            </>}
-            
-
-
-
-
+              {/* cart item image */}
+              {items.length != 0 ? (
+                <>
+                  {items.map((item) => {
+                    return (
+                      <li key={item.id}>
+                        <div className="item_image">
+                          <div
+                            className="deleteItems"
+                            title="delete"
+                            onClick={() =>
+                              removeFromCart(item.id, item.productName)
+                            }
+                          >
+                            <MdClose />
+                          </div>
+                          <Image
+                            src={item.productImage}
+                            alt={item.productImage}
+                            layout="fill"
+                          />
+                        </div>
+                        <div className="item_details">
+                          <h1>{item.productName}</h1>
+                          <p>
+                            {" "}
+                            {item.qtyBook} x Rs. {item.qtyBook * item.price}
+                          </p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </>
+              ) : (
+                <>
+                  <li>cart is empty</li>
+                </>
+              )}
             </div>
 
             {/* total */}
