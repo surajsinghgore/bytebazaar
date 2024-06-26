@@ -12,9 +12,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clientLoginState } from "../../redux/slice/ClientLoginState";
-
 import {  useCart } from "react-use-cart";
 export default function Page() {
+
   const {
     
     totalUniqueItems,

@@ -513,7 +513,7 @@ export default function Page() {
                   <>
                     {data.map((item) => {
                       return (
-                        <ProductItemContainer item={item}/>
+                        <ProductItemContainer item={item} key={item._id}/>
                         
                       );
                     })}

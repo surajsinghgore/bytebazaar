@@ -1,6 +1,7 @@
-"use client";
-import { CartProvider } from 'react-use-cart';
+"use client"; // Ensure this is a client component
 
-export function AddToCartProvider({ children }) {
+import { CartProvider } from "react-use-cart";
+
+export const CartProviders = ({ children }) => {
   return <CartProvider>{children}</CartProvider>;
-}
+};
