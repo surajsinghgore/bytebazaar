@@ -9,7 +9,6 @@ import { IoSearch } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import Link from "next/link";
-import { FaAngleDown } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clientLoginState } from "../../redux/slice/ClientLoginState";
@@ -90,131 +89,18 @@ export default function Page() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <Link href={""}>
+          <Link href={"/products"}>
             Shop{" "}
-            <span className="downArrow">
-              <FaAngleDown />
-            </span>
+            
           </Link>
 
-          <div className="mainSubMenu">
-            {/* women */}
-            <div className="mainSubContainer">
-              <h3>Women's Fashion</h3>
-
-              <div className="links_main_subMenu">
-                <div className="li">
-                  <Link href="/collections/dress">Dress</Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/tops">Tops</Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/jackets coats">
-                    Jackets and coats
-                  </Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/pants jeans">Pants and Jeans</Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/skirts">Skirts</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* mens */}
-            <div className="mainSubContainer">
-              <h3>Men's Fashion</h3>
-
-              <div className="links_main_subMenu">
-                <div className="li">
-                  <Link href="/collections/shirts">Shirts</Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/t-shirts">T-shirts & Polo</Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/jackets and blazers">
-                    Jackets and Blazers
-                  </Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/jeans">Jeans</Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/shoes">Shoes</Link>
-                </div>
-                <div className="li">
-                  <Link href="/collections/pants">Pants</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* accessories */}
-            <div className="mainSubContainer">
-              <h3>Accessories</h3>
-
-              <div className="links_main_subMenu">
-                <div className="li">
-                  <Link href="">Bags and Purses</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Hat's and Cap</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Belts & Suspends</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Watches</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Jewelry</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Sunglasses</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* electronics */}
-            <div className="mainSubContainer">
-              <h3>Electronics</h3>
-
-              <div className="links_main_subMenu">
-                <div className="li">
-                  <Link href="">Smartphone</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Laptop</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Tablet</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Television</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Digital Camera</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Bluetooth Speaker</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Smart Light Bulb</Link>
-                </div>
-                <div className="li">
-                  <Link href="">Gaming Console</Link>
-                </div>
-              </div>
-            </div>
-          </div>
+        
         </li>
         <li>
           <Link href={""}>Category</Link>
         </li>
         <li>
-          <Link href={""}>Product</Link>
+          <Link href={"/products"}>Product</Link>
         </li>
       </div>
 

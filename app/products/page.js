@@ -2,19 +2,18 @@
 import { FaAngleDown } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import style from "./style.module.css";
-import { FaRegEye } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { useParams } from "next/navigation";
-import { FaShoppingCart } from "react-icons/fa";
+
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Loader from "../../../layout/Loader/page";
+import Loader from "../../layout/Loader/page";
+import ProductItemContainer from '../../components/ProductItemContainer/page'
 export default function Page() {
-  const getParams = useParams();
-  const activeCategory = decodeURIComponent(getParams.category[0]);
+
+ 
   const [data, setData] = useState([]);
   const [backupData, setBackupData] = useState([]);
+  const [selectedTopOption, setSelectedTopOption] = useState("");
   const [selectedBrandValues, setBrandSelectedValues] = useState([]);
   const [selectedPriceValues, setPriceSelectedValues] = useState([]);
   const [loaderState, setLoaderState] = useState(false);
@@ -31,6 +30,43 @@ export default function Page() {
     mediumRange: 0,
     smallRange: 0,
   });
+
+  // Handler function to update top filter select box
+  const handleSelectChange = (event) => {
+    setLoaderState(true);
+    setTimeout(() => {
+      setLoaderState(false);
+    }, 1000);
+
+    setSelectedTopOption(event.target.value);
+    if (event.target.value === "low") {
+      setData(backupData);
+    }
+    if (event.target.value === "ascending") {
+      const sortedByName = [...backupData].sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      });
+      setData(sortedByName);
+    }
+    if (event.target.value === "descending") {
+      const sortedByName = [...backupData].sort((a, b) => {
+        if (a.name > b.name) return -1;
+        if (a.name < b.name) return 1;
+        return 0;
+      });
+      setData(sortedByName);
+    }
+    if (event.target.value === "low") {
+      const sortedByPrice = [...backupData].sort((a, b) => a.price - b.price);
+      setData(sortedByPrice);
+    }
+    if (event.target.value === "high") {
+      const sortedByPrice = [...backupData].sort((a, b) => b.price - a.price);
+      setData(sortedByPrice);
+    }
+  };
 
   // filter data using category
   const filterDataUsingCategory = (data, category) => {
@@ -202,28 +238,22 @@ export default function Page() {
         newArray.push(...filterDataUsingBrandName(backupData, item));
       });
       setData(newArray);
-    } else {
-      setData(backupData);
     }
   }, [selectedBrandValues]);
 
   // handle price range change
   useEffect(() => {
-
     if (selectedPriceValues.length !== 0) {
       let newArray = [];
 
       selectedPriceValues.map((item) => {
-  
         if (item === "lac") {
-          const DataReturn = backupData.filter(
-            (item) => item.price > 100000
-          );
+          const DataReturn = backupData.filter((item) => item.price > 100000);
           newArray.push(...DataReturn);
         }
         if (item === "large") {
-          const DataReturn = backupData.filter((item)=>
-            item.price >= 50000 && item.price <= 99999
+          const DataReturn = backupData.filter(
+            (item) => item.price >= 50000 && item.price <= 99999
           );
           newArray.push(...DataReturn);
         }
@@ -234,24 +264,19 @@ export default function Page() {
           newArray.push(...DataReturn);
         }
         if (item === "small") {
-          const DataReturn = backupData.filter(
-            (item) => item.price <= 19999
-          );
+          const DataReturn = backupData.filter((item) => item.price <= 19999);
           newArray.push(...DataReturn);
         }
-       
       });
 
-     setData(newArray)
-    }else{
-      setData(backupData)
+      setData(newArray);
     }
   }, [selectedPriceValues]);
   return (
     <>
       <div className={style.topCategory}>
         <div className={style.description}>
-          <h1>Featured (Electronics)</h1>
+          <h1>Featured (Products)</h1>
           <div className={style.path}>
             <div className={style.mainPath}>
               <Link href="/">Home</Link>
@@ -259,17 +284,17 @@ export default function Page() {
             <div className={style.arrowRight}>
               <FaChevronRight />
             </div>
-            <div className={style.parentPath}>Featured (Electronics)</div>
+            <div className={style.parentPath}>Product</div>
           </div>
 
           <p className={style.desc}>
             Welcome to our collection, where excitement meets discovery. We're
             committed to keeping you at the forefront technology, and lifestyle
-            trends
+            trends with smartphone,watches and earphones
           </p>
         </div>
         <div className={style.image_section}>
-          <Image src="/category.webp" alt={`${activeCategory}`} layout="fill" />
+          <Image src="/category.webp" alt={"category"} layout="fill" />
         </div>
       </div>
 
@@ -330,9 +355,11 @@ export default function Page() {
                   onChange={handleCheckboxChange}
                 />
                 <label htmlFor="apple">
-
-                Apple{" "}
-                <span className={style.countNumber}> ({totalCount.apple})</span>
+                  Apple{" "}
+                  <span className={style.countNumber}>
+                    {" "}
+                    ({totalCount.apple})
+                  </span>
                 </label>
               </li>
 
@@ -364,12 +391,11 @@ export default function Page() {
                   onChange={handleCheckboxChange}
                 />
                 <label htmlFor="google">
-
-                google{" "}
-                <span className={style.countNumber}>
-                  {" "}
-                  ({totalCount.google})
-                </span>
+                  google{" "}
+                  <span className={style.countNumber}>
+                    {" "}
+                    ({totalCount.google})
+                  </span>
                 </label>
               </li>
             </div>
@@ -445,7 +471,7 @@ export default function Page() {
                   onChange={handlePriceCheckboxChange}
                 />
                 <label htmlFor="small">
-                  19999-{" "}
+                  0 - 19999{" "}
                   <span className={style.countNumber}>
                     {" "}
                     ({totalCount.smallRange})
@@ -464,14 +490,15 @@ export default function Page() {
               {/* top bar */}
               <div className={style.topBar}>
                 <div className={style.search}>
-                  <select>
-                    <option value="manual">Filter</option>
-                    <option value="title-ascending">Alphabetically, A-Z</option>
-                    <option value="title-descending">
-                      Alphabetically, Z-A
-                    </option>
-                    <option value="price-ascending">Price, low to high</option>
-                    <option value="price-descending">Price, high to low</option>
+                  <select
+                    value={selectedTopOption}
+                    onChange={handleSelectChange}
+                  >
+                    <option value="no">Filter</option>
+                    <option value="ascending">Alphabetically, A-Z</option>
+                    <option value="descending">Alphabetically, Z-A</option>
+                    <option value="low">Price, low to high</option>
+                    <option value="high">Price, high to low</option>
                   </select>
                 </div>
 
@@ -486,41 +513,8 @@ export default function Page() {
                   <>
                     {data.map((item) => {
                       return (
-                        <div className={style.itemCard} key={item._id}>
-                          <div className={style.itemCardImageContainer}>
-                            <Image
-                              src={item.image}
-                              alt={item.image}
-                              layout="fill"
-                            />
-                            {/* menu on image */}
-                            <div className={style.menuOnImage}>New</div>
-
-                            {/* image drop down */}
-                            <div className={style.imageDropDown}>
-                              <li title="Quick View">
-                                <Link href="">
-                                  <FaRegEye />
-                                </Link>
-                              </li>
-                              <li title="Add to cart">
-                                <Link href="">
-                                  <FaShoppingCart />
-                                </Link>
-                              </li>
-                              <li title="Add to wishlist">
-                                <Link href="">
-                                  <FaHeart />
-                                </Link>
-                              </li>
-                            </div>
-                          </div>
-
-                          <div className={style.productDesc}>
-                            <h2>{item.name}</h2>
-                            <p>Rs. {item.price}</p>
-                          </div>
-                        </div>
+                        <ProductItemContainer item={item}/>
+                        
                       );
                     })}
                   </>
