@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCart } from "react-use-cart";
 import { cartPopUpState } from "../../redux/slice/CartPopUpModelState";
+import { cartDataChangeState } from "../../redux/slice/CartDataChangeState";
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
@@ -9,6 +10,7 @@ import { MdClose } from "react-icons/md";
 export default function Page() {
   // const [cartData]
   const popState = useSelector((state) => state.cartPopUpState);
+  const cartDataState = useSelector((state) => state.cartDataChangeState);
   const dispatch = useDispatch();
 
   const closePop = () => {
@@ -17,17 +19,9 @@ export default function Page() {
 
   const { cartTotal, removeItem, items } = useCart();
 
-  const removeFromCart = (id, name) => {
+  const removeFromCart = (id) => {
     removeItem(id);
-    toast.error(`${name} successfully removed from cart`, {
-      position: "bottom-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    dispatch(cartDataChangeState(!cartDataState.state));
   };
   return (
     <>
@@ -58,7 +52,7 @@ export default function Page() {
                             className="deleteItems"
                             title="delete"
                             onClick={() =>
-                              removeFromCart(item.id, item.productName)
+                              removeFromCart(item.id)
                             }
                           >
                             <MdClose />

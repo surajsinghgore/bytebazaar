@@ -2,7 +2,6 @@
 import { FaAngleDown } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import style from "./style.module.css";
-
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -10,7 +9,7 @@ import Loader from "../../layout/Loader/page";
 import ProductItemContainer from '../../components/ProductItemContainer/page'
 export default function Page() {
 
- 
+
   const [data, setData] = useState([]);
   const [backupData, setBackupData] = useState([]);
   const [selectedTopOption, setSelectedTopOption] = useState("");
@@ -228,8 +227,10 @@ export default function Page() {
   };
   useEffect(() => {
     fetchAllProductData();
+    
   }, []);
 
+ 
   // handle brand filter
   useEffect(() => {
     if (selectedBrandValues.length !== 0) {

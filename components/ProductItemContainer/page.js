@@ -6,10 +6,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import Image from "next/legacy/image";
 import { useCart } from "react-use-cart";
 import { useEffect, useState } from "react";
+import {  useSelector } from "react-redux";
+
 import { FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function Page({ item }) {
+  const cartDataState = useSelector((state) => state.cartDataChangeState);
   const [inCartState, setInCartState] = useState(true);
   const { items, removeItem, addItem } = useCart();
 
@@ -71,6 +74,13 @@ export default function Page({ item }) {
     }
   }, []);
 
+  useEffect(()=>{
+    // if(cartDataState.state==true){
+
+    //   checkInCart()
+    // }
+    console.log(inCartState)
+  },[cartDataState])
   return (
     <div className={style.itemCard} key={item._id}>
       <div className={style.itemCardImageContainer}>
