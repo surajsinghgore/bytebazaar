@@ -34,7 +34,7 @@ export default function Page({ item }) {
       productName,
       productImage,
       price: productPrice,
-      qtyBook: QtyBook,
+      qtyBook: QtyBook
     });
     checkInCart();
     toast.success(`${productName} successfully added in cart`, {

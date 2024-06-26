@@ -1,17 +1,35 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
+import { useCart } from "react-use-cart";
 import { cartPopUpState } from "../../redux/slice/CartPopUpModelState";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link";import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import { IoMdClose } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 export default function Page() {
+  // const [cartData]
   const popState = useSelector((state) => state.cartPopUpState);
   const dispatch = useDispatch();
 
   const closePop = () => {
     dispatch(cartPopUpState(false));
+  };
+
+  const {cartTotal , removeItem,items } = useCart();
+
+  const removeFromCart = (id, name) => {
+    removeItem(id);
+    toast.error(`${name} successfully removed from cart`, {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   return (
     <>
@@ -31,24 +49,39 @@ export default function Page() {
             </h2>
 
             <div className="item_container">
-              <li>
+            {/* cart item image */}
+            {items.length!=0 ? <>
+              {items.map((item)=>{
+                return <li key={item.id}>
                 <div className="item_image">
-                  <div className="deleteItems" title="delete">
+                  <div className="deleteItems" title="delete" onClick={()=>removeFromCart(item.id,item.productName)}>
                     <MdClose />
                   </div>
-                  <Image src="/dummy/img1.webp" alt="img 1" layout="fill" />
+                  <Image src={item.productImage} alt={item.productImage} layout="fill" />
                 </div>
                 <div className="item_details">
-                  <h1>W. Men Formal T-shirt - white</h1>
-                  <p>1 x Rs. 1,700.00</p>
+                  <h1>{item.productName}</h1>
+                  <p> {item.qtyBook} x Rs. {item.qtyBook*item.price}</p>
                 </div>
               </li>
+              })}
+            </>:<>
+
+            <li >
+                cart is empty
+              </li>
+            </>}
+            
+
+
+
+
             </div>
 
             {/* total */}
             <div className="total_sum">
               <h1>Subtotal:</h1>
-              <p>Rs. 27,300.00</p>
+              <p>Rs. {cartTotal}</p>
             </div>
 
             <div className="cartButton">
