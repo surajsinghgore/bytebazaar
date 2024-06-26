@@ -1,0 +1,18 @@
+.LoaderContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 98;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.LoaderImageContainer{
+    position: relative;
+    width: 5%;
+    height: 50px;
+    margin-top: 7%;
+}

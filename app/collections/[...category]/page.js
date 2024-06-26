@@ -9,12 +9,14 @@ import { FaShoppingCart } from "react-icons/fa";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Loader from "../../../layout/Loader/page";
 export default function Page() {
   const getParams = useParams();
   const activeCategory = decodeURIComponent(getParams.category[0]);
   const [data, setData] = useState([]);
   const [backupData, setBackupData] = useState([]);
-
+    const [selectedValues, setSelectedValues] = useState([]);
+  const [loaderState, setLoaderState] = useState(false);
   const [totalCount, setTotalCount] = useState({
     smartphone: 0,
     watch: 0,
@@ -127,6 +129,45 @@ export default function Page() {
       smallRange: smallRangeData.length,
     }));
   };
+
+  // filter data
+  const filterData = (category) => {
+    setLoaderState(true);
+    setTimeout(() => {
+      setLoaderState(false);
+    }, 1000);
+
+    if (category == "smartphone") {
+      const smartphoneData = filterDataUsingCategory(backupData, "smartphone");
+      setData(smartphoneData);
+    }
+    if (category == "watch") {
+      const Data = filterDataUsingCategory(backupData, "watch");
+      setData(Data);
+    }
+    if (category == "adapter") {
+      const Data = filterDataUsingCategory(backupData, "adapter");
+      setData(Data);
+    }
+    if (category == "earphone") {
+      const Data = filterDataUsingCategory(backupData, "earphone");
+      setData(Data);
+    }
+  };
+
+  const handleCheckboxChange = (event) => {
+    const value = event.target.value;
+    
+    if (event.target.checked) {
+      console.log('ss')
+      setSelectedValues([...selectedValues, value]);
+    } else {
+      
+      console.log('cc')
+        setSelectedValues(selectedValues.filter(item => item !== value));
+    }
+};
+
   useEffect(() => {
     fetchAllProductData();
   }, []);
@@ -166,30 +207,31 @@ export default function Page() {
               </span>
             </h1>
             <div className={style.subCategories}>
-              <li>
-                <Link href="">
-                  Smartphone{" "}
-                  <span className={style.countNumber}>
-                    ({totalCount.smartphone})
-                  </span>
-                </Link>
+              <li onClick={() => filterData("smartphone")}>
+                Smartphone{" "}
+                <span className={style.countNumber}>
+                  ({totalCount.smartphone})
+                </span>
               </li>
 
-              <li>
-                <Link href="">
-                  Watch <span className={style.countNumber}> ({totalCount.watch})</span>
-                </Link>
+              <li onClick={() => filterData("watch")}>
+                Watch{" "}
+                <span className={style.countNumber}> ({totalCount.watch})</span>
               </li>
-              <li>
-                <Link href="">
-                  Adapter <span className={style.countNumber}> ({totalCount.adapter})</span>
-                </Link>
+              <li onClick={() => filterData("adapter")}>
+                Adapter{" "}
+                <span className={style.countNumber}>
+                  {" "}
+                  ({totalCount.adapter})
+                </span>
               </li>
 
-              <li>
-                <Link href="">
-                  Earphone <span className={style.countNumber}> ({totalCount.earphone})</span>
-                </Link>
+              <li onClick={() => filterData("earphone")}>
+                Earphone{" "}
+                <span className={style.countNumber}>
+                  {" "}
+                  ({totalCount.earphone})
+                </span>
               </li>
             </div>
           </div>
@@ -203,18 +245,30 @@ export default function Page() {
             </h1>
             <div className={style.subCategories}>
               <li>
-                <input type="checkbox" />
-                Apple <span className={style.countNumber}> ({totalCount.apple})</span>
+                <input type="checkbox" name="brandName" value="apple"  checked={selectedValues.includes('apple')}
+                onChange={handleCheckboxChange}/>
+                Apple{" "}
+                <span className={style.countNumber}> ({totalCount.apple})</span>
               </li>
 
               <li>
-                <input type="checkbox" />
-                Samsung <span className={style.countNumber}> ({totalCount.samsung})</span>
+                <input type="checkbox" name="brandName" value="samsung" checked={selectedValues.includes('samsung')}
+                onChange={handleCheckboxChange} />
+                Samsung{" "}
+                <span className={style.countNumber}>
+                  {" "}
+                  ({totalCount.samsung})
+                </span>
               </li>
 
               <li>
-                <input type="checkbox" />
-                google <span className={style.countNumber}> ({totalCount.google})</span>
+                <input type="checkbox" name="brandName" value="google" checked={selectedValues.includes('google')}
+                onChange={handleCheckboxChange}/>
+                google{" "}
+                <span className={style.countNumber}>
+                  {" "}
+                  ({totalCount.google})
+                </span>
               </li>
             </div>
           </div>
@@ -229,26 +283,44 @@ export default function Page() {
             <div className={style.subCategories}>
               <li>
                 <input type="checkbox" />
-                10000+ <span className={style.countNumber}> ({totalCount.greaterThanLac})</span>
+                10000+{" "}
+                <span className={style.countNumber}>
+                  {" "}
+                  ({totalCount.greaterThanLac})
+                </span>
               </li>
 
               <li>
                 <input type="checkbox" />
-                50000 - 99999 <span className={style.countNumber}> ({totalCount.largeRange})</span>
+                50000 - 99999{" "}
+                <span className={style.countNumber}>
+                  {" "}
+                  ({totalCount.largeRange})
+                </span>
               </li>
               <li>
                 <input type="checkbox" />
-                20000 - 49999 <span className={style.countNumber}> ({totalCount.mediumRange})</span>
+                20000 - 49999{" "}
+                <span className={style.countNumber}>
+                  {" "}
+                  ({totalCount.mediumRange})
+                </span>
               </li>
               <li>
                 <input type="checkbox" />
-                19999- <span className={style.countNumber}> ({totalCount.smallRange})</span>
+                19999-{" "}
+                <span className={style.countNumber}>
+                  {" "}
+                  ({totalCount.smallRange})
+                </span>
               </li>
             </div>
           </div>
         </div>
 
         <div className={style.itemCategory}>
+          {loaderState && <Loader />}
+
           {/* top bar */}
           <div className={style.topBar}>
             <div className={style.search}>
