@@ -1,10 +1,22 @@
+"use client"
 import style from '../../app/products/style.module.css'
 import { FaRegEye } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import Image from "next/legacy/image";
-import Link from "next/link";
+import {  useCart } from "react-use-cart";
+
 export default function page({item}) {
-    
+    const {
+        items,   emptyCart,
+        removeItem,
+        addItem 
+      } = useCart();
+    const addProductToCart=(product)=>{
+        let pName=product.name;
+        addItem({product:pName})
+        console.log(product.name)
+
+    }
   return (
     <div className={style.itemCard} key={item._id}>
       <div className={style.itemCardImageContainer}>
@@ -15,14 +27,14 @@ export default function page({item}) {
         {/* image drop down */}
         <div className={style.imageDropDown}>
           <li title="Quick View">
-            <Link href="">
+         
               <FaRegEye />
-            </Link>
+
           </li>
-          <li title="Add to cart">
-            <Link href="">
+          <li title="Add to cart" onClick={()=>addProductToCart(item)}>
+           
               <FaShoppingCart />
-            </Link>
+          
           </li>
         </div>
       </div>

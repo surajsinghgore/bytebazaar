@@ -1,6 +1,6 @@
 "use client";
-import { CartProvider } from "react-use-cart";
+import { CartProvider } from 'react-use-cart';
 
-export function Providers({ children }) {
+export function AddToCartProvider({ children }) {
   return <CartProvider>{children}</CartProvider>;
 }

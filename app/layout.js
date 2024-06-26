@@ -4,7 +4,8 @@ import Header from "../layout/Header/page";
 import Footer from "../layout/Footer/page";
 import CardPage from "../components/CartPage/page";
 const inter = Inter({ subsets: ["latin"] });
-
+// add to cart provider
+import {AddToCartProvider} from "../providers/addToCartProvider";
 export const metadata = {
   icons: {
     icon: "/icon.png",
@@ -19,21 +20,23 @@ export const metadata = {
 
 // redux provider import
 import { Providers } from "../redux/Provider";
-// add to cart provider
-import addToCartProvider from "../providers/addToCartProvider";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+      <AddToCartProvider>
+
         <Providers>
-        <addToCartProvider>
+    
 
           <Header />
           <CardPage />
           {children}
           <Footer />
-        </addToCartProvider>
+    
         </Providers>
+      </AddToCartProvider>
       </body>
     </html>
   );
