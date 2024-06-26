@@ -12,7 +12,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clientLoginState } from "../../redux/slice/ClientLoginState";
+
+import {  useCart } from "react-use-cart";
 export default function Page() {
+  const {
+    
+    totalUniqueItems,
+    
+  } = useCart();
   const pathname = usePathname();
   const { push } = useRouter();
   const dispatch = useDispatch();
@@ -135,7 +142,7 @@ export default function Page() {
         </li>
         <li>
           <i onClick={() => dispatch(cartPopUpState(true))}>
-            <span>0</span>
+            <span>{totalUniqueItems}</span>
             <FiShoppingCart />
           </i>
         </li>

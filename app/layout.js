@@ -19,15 +19,20 @@ export const metadata = {
 
 // redux provider import
 import { Providers } from "../redux/Provider";
+// add to cart provider
+import addToCartProvider from "../providers/addToCartProvider";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers>
+        <addToCartProvider>
+
           <Header />
           <CardPage />
           {children}
           <Footer />
+        </addToCartProvider>
         </Providers>
       </body>
     </html>
