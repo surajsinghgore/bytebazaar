@@ -2,6 +2,6 @@
 
 import { CartProvider } from "react-use-cart";
 
-export const CartProviders = ({ children }) => {
+export const AddToCartProvider = ({ children }) => {
   return <CartProvider>{children}</CartProvider>;
 };

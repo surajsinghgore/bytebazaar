@@ -5,7 +5,7 @@ import Footer from "../layout/Footer/page";
 import CardPage from "../components/CartPage/page";
 const inter = Inter({ subsets: ["latin"] });
 // add to cart provider
-import { CartProviders } from "../providers/addToCartProvider";
+import { AddToCartProvider } from "../providers/addToCartProvider";
 export const metadata = {
   icons: {
     icon: "/icon.png",
@@ -25,14 +25,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-          <CartProviders>
-        <Providers>
+        <AddToCartProvider>
+          <Providers>
             <Header />
             <CardPage />
             {children}
             <Footer />
-        </Providers>
-          </CartProviders>
+          </Providers>
+        </AddToCartProvider>
       </body>
     </html>
   );

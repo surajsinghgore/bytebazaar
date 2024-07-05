@@ -4,7 +4,7 @@ import style from "./style.module.css";
 import { useCart } from "react-use-cart";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 export default function page() {
@@ -85,6 +85,11 @@ export default function page() {
   // handle instruction
   const handleInstruction = (e) => {
     SetSpecialInstruction(e.target.value);
+    if (e.target.value == "") {
+      localStorage.removeItem("specialInstruction");
+    } else {
+      localStorage.setItem("specialInstruction", e.target.value);
+    }
   };
 
   return (
