@@ -7,7 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 import { MdClose } from "react-icons/md";
+import React, { useEffect, useRef } from 'react';
 export default function Page() {
+  const modalRef = useRef(null);
+
   // const [cartData]
   const popState = useSelector((state) => state.cartPopUpState);
   const cartDataState = useSelector((state) => state.cartDataChangeState);
@@ -23,12 +26,31 @@ export default function Page() {
     removeItem(id);
     dispatch(cartDataChangeState(!cartDataState.state));
   };
+
+
+
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      closePop();
+    }
+  };
+
+  useEffect(() => {
+    if (popState) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+  
+  }, [popState]);
   return (
     <>
       {popState.state ? (
         <div className="cart_container">
           <div className="bgBlur"></div>
-          <div className="cart_page">
+          <div className="cart_page" ref={modalRef}>
             <h2>
               Cart{" "}
               <span
