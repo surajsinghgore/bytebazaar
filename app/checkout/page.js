@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import style from "./style.module.css";
 import { useCart } from "react-use-cart";
-import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 var pincodeDirectory = require("india-pincode-lookup");
 export default function page() {

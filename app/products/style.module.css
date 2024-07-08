@@ -313,23 +313,6 @@ align-items: center;
   border-radius: 60px;
 }
 
-.itemContainerBody .itemCard .productDesc .colors .red_color {
-  background-color: red !important;
-}
-.itemContainerBody .itemCard .productDesc .colors .blue_color {
-  background-color: rgb(0, 153, 255);
-}
-.itemContainerBody .itemCard .productDesc .colors .green_color {
-  background-color: rgb(54, 145, 91);
-}
-.itemContainerBody .itemCard .productDesc .colors .pink_color {
-  background-color: rgb(240, 4, 205);
-}
-.itemContainerBody .itemCard .productDesc .colors .no_color {
-  font-size: 0.8vw;
-  background-color: rgb(235, 235, 235);
-  padding-top: 1%;
-}
 
 .cutPrice {
   font-size: 1vw;

@@ -1,0 +1,45 @@
+.Banner {
+  width: 96%;
+  padding: 50px 5%;
+  border-radius: 20px;
+  background-color: #ebebeb;
+  margin: 2% auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Banner .left h1 {
+    text-transform: capitalize;
+}
+
+.Banner .details {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+}
+.Banner .details h6 {
+  font-size: 17px;
+}
+.Banner .details h6 a {
+  color: black;
+}
+.Banner .details h6 a:hover {
+  color: #0885d2;
+}
+
+.Banner .details p {
+    text-transform: capitalize;
+    color: #0885d2;
+}
+/* .Banner .right{
+    padding-right: 5%;
+} */
+
+.Banner .right .imgParent {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+.Banner .right .imgParent img {
+  border-radius: 10px;
+}
