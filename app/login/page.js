@@ -4,19 +4,15 @@ import { useRouter } from "next/navigation";
 import style from "./style.module.css";
 import { useEffect, useState } from "react";
 
-
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clientLoginState } from "../../redux/slice/ClientLoginState";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function Page() {
   const dispatch = useDispatch();
 
-
-
-  
-  const [preventPage,setPreventPage]=useState(false);
-    const { push } = useRouter();
+  const [preventPage, setPreventPage] = useState(false);
+  const { push } = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,99 +27,93 @@ export default function Page() {
   const loginFunctionality = async (e) => {
     e.preventDefault();
     if (formData.email.trim() === "") {
-        toast.warn(`Email is required`, {
-          position: "bottom-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        return;
-      }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
-        toast.warn(`Email is not valid`, {
-          position: "bottom-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        return;
-      }
-
-
-
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      toast.warn(`Email is required`, {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
-      let serverPayload = await res.json();
-      if (res.status == "500") {
-        toast.error("Internal Server Error", {
-          position: "bottom-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        return;
-      }
-      if (res.status == "400"||res.status == "401"||res.status == "404") {
-        toast.warn(`${serverPayload.error}`, {
-          position: "bottom-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        return;
-      }
-  
-      if (res.status == "200") {
-        dispatch(clientLoginState(true));
-        toast.success(serverPayload.message, {
-          position: "bottom-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        localStorage.setItem('clientLogin',"true");
-        setTimeout(() => {
-          push("/");
-        }, 2000);
-        return;
-      }
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.warn(`Email is not valid`, {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
+
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    let serverPayload = await res.json();
+    if (res.status == "500") {
+      toast.error("Internal Server Error", {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
+    if (res.status == "400" || res.status == "401" || res.status == "404") {
+      toast.warn(`${serverPayload.error}`, {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
+
+    if (res.status == "200") {
+      dispatch(clientLoginState(true));
+      toast.success(serverPayload.message, {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      localStorage.setItem("clientLogin", "true");
+      setTimeout(() => {
+        push("/");
+      }, 2000);
+      return;
+    }
   };
 
-
-  useEffect(()=>{
-    if(localStorage.getItem('clientLogin')){
-      push('/')
+  useEffect(() => {
+    if (localStorage.getItem("clientLogin")) {
+      push("/");
       setPreventPage(false);
-      
-    }else{
+    } else {
       setPreventPage(true);
-
     }
-  })
+  });
   return (
-    <>
-{(preventPage)?<div className={style.login}>
+    <div className={style.login}>
       <div className={style.form_container}>
         <h1>Login</h1>
         <p>Please login using account detail bellow.</p>
@@ -169,8 +159,6 @@ export default function Page() {
         draggable
         pauseOnHover
       />
-    </div>:<h1 className={style.withoutLogin}>Please Logout To Access This Page</h1>}
-  
-    </>
+    </div>
   );
 }
