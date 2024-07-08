@@ -203,7 +203,7 @@ Continue browsing <Link href="/">here</Link>
               <li className={style.bottomHeading}>Total</li>
               <li className={style.bottomData}>Rs. {payableAmount}</li>
             </div>
-            {console.log(items.length)}
+
             {items.length == 0 ? (
               <>
                 <button disabled style={{ cursor: "text" }}>

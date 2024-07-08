@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import style from "./style.module.css";
 import { useCart } from "react-use-cart";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 var pincodeDirectory = require("india-pincode-lookup");
 export default function page() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     country: "india",
@@ -13,12 +15,13 @@ export default function page() {
     lname: "",
     address: "",
     city: "",
+    mobile: "",
     state: "",
     items: [],
   });
   const [coupon, setCoupon] = useState("");
   const [onlinePaymentState, setOnlinePaymentState] = useState(true);
-  const { cartTotal, items } = useCart();
+  const { cartTotal, items, emptyCart } = useCart();
   const [pincode, setPincode] = useState("");
   const [payableAmount, setPayableAmount] = useState(0);
   useEffect(() => {
@@ -80,11 +83,32 @@ export default function page() {
     }
     if (e.target.value.length == 6) {
       let pincodeData = pincodeDirectory.lookup(e.target.value);
+      if (pincodeData.length == 0) {
+        toast.warn("Invalid Pincode", {
+          position: "bottom-right",
+          autoClose: 1200,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        return;
+      } else {
+        setFormData({
+          ...formData,
+          city: pincodeData[0].districtName,
+          state: pincodeData[0].stateName,
+        });
+      }
+    }
+  };
 
+  const handleMobileChange = (e) => {
+    if (e.target.value.length <= 10) {
       setFormData({
         ...formData,
-        city: pincodeData[0].districtName,
-        state: pincodeData[0].stateName,
+        mobile: e.target.value,
       });
     }
   };
@@ -142,6 +166,18 @@ export default function page() {
       });
       return;
     }
+    if (formData.mobile == "") {
+      toast.warn("Enter Mobile Number", {
+        position: "bottom-right",
+        autoClose: 1200,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     if (formData.pincode == "") {
       toast.warn("Enter Pincode Address", {
         position: "bottom-right",
@@ -183,6 +219,18 @@ export default function page() {
       amountReceived = 0;
     }
 
+    if (formData.mobile.length > 10) {
+      toast.warn("Mobile number must contain exactly 10 digits", {
+        position: "bottom-right",
+        autoClose: 1200,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     const res = await fetch("/api/order", {
       method: "POST",
       body: JSON.stringify({
@@ -197,12 +245,12 @@ export default function page() {
         address: formData.address,
         email: formData.email,
         lastName: formData.lname,
+        mobile: formData.mobile,
         firstName: formData.fname,
         country: formData.country,
       }),
     });
     const data = await res.json();
-
     if (res.status === "500") {
       toast.error("Internal Server Erro", {
         position: "bottom-right",
@@ -228,8 +276,8 @@ export default function page() {
       return;
     }
 
-    if (res.status === "201") {
-      toast.warn("Order Placed Successfully", {
+    if (data.data) {
+      toast.success("Order Placed Successfully", {
         position: "bottom-right",
         autoClose: 1200,
         hideProgressBar: false,
@@ -238,13 +286,18 @@ export default function page() {
         draggable: true,
         progress: undefined,
       });
-      return;
+      localStorage.setItem("order", JSON.stringify(data.data));
+      router.push("/ordercomplete");
+      emptyCart();
+      if (localStorage.getItem("specialInstruction")) {
+        localStorage.removeItem("specialInstruction");
+      }
     }
   };
   return (
     <div className={style.checkoutContainer}>
       <div className={style.formContainer}>
-        <form method="post" onSubmit={orderNow}>
+        <form method="post" onSubmit={(e) => orderNow(e)}>
           <h1>Contact</h1>
           <input
             type="email"
@@ -287,6 +340,15 @@ export default function page() {
             onChange={(e) => handleInputChange(e)}
             placeholder="Last name (optional)"
             className={style.smallSizeInput}
+          />
+          <input
+            type="number"
+            placeholder="mobile"
+            value={formData.mobile}
+            onWheel={handleWheel}
+            onChange={(e) => handleMobileChange(e)}
+            className={style.fullSizeInput}
+            required
           />
           <input
             type="number"
@@ -373,9 +435,15 @@ export default function page() {
           </div>
 
           <div className={style.payNow}>
-            <button type="submit" onClick={() => orderNow()}>
-              Pay Now
-            </button>
+            {items.length != 0 ? (
+              <button type="submit" onClick={(e) => orderNow(e)}>
+                Pay Now
+              </button>
+            ) : (
+              <button type="submit" disabled style={{ cursor: "text" }}>
+                Pay Now
+              </button>
+            )}
           </div>
         </form>
       </div>
@@ -398,6 +466,9 @@ export default function page() {
                 );
               })}
             </>
+          )}
+          {items.length == 0 && (
+            <p className={style.NoItemInCart}>No Items In Cart</p>
           )}
         </div>
 
