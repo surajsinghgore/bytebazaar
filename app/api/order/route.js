@@ -3,34 +3,6 @@ import DbConnection from "../middleware/DatabaseConnection";
 import OrderSchema from "../model/OrderSchema";
 import VerifyUserLogin from "../middleware/VeirfyUserLogin";
 
-const validateCardDetails = (cardNumber, expiryDate, cvv, cardHolderName) => {
-  const errors = [];
-
-  // Validate card number using Luhn algorithm
-  if (!luhn.validate(cardNumber)) {
-    errors.push("Invalid card number");
-  }
-
-  // Validate expiry date (format: MM/YY)
-  const [month, year] = expiryDate.split("/");
-  const expiry = new Date(`20${year}`, month);
-  const now = new Date();
-  if (expiry < now) {
-    errors.push("Card has expired");
-  }
-
-  // Validate CVV (assuming it should be 3 or 4 digits)
-  if (!/^\d{3,4}$/.test(cvv)) {
-    errors.push("Invalid CVV");
-  }
-
-  // Validate card holder name (optional, based on your needs)
-  if (!cardHolderName || cardHolderName.trim() === "") {
-    errors.push("Card holder name is required");
-  }
-
-  return errors;
-};
 
 export async function POST(req) {
   try {
@@ -64,11 +36,8 @@ export async function POST(req) {
       city,
       paymentmode,
       totalamount,
-      amountreceived,
-      cardNumber,
-      expiryDate,
-      cvv,
-      cardHolderName,
+      amountreceived
+     
     } = await req.json();
 
     if (!email || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email))
@@ -85,11 +54,7 @@ export async function POST(req) {
       });
     if (!state || state.trim() === "")
       errors.push({ field: "state", message: "State must not be empty" });
-    if (!lastName || lastName.trim() === "")
-      errors.push({
-        field: "lastName",
-        message: "Last Name must not be empty",
-      });
+   
     if (!address || address.trim() === "")
       errors.push({ field: "address", message: "Address must not be empty" });
     if (!city || city.trim() === "")
@@ -106,11 +71,7 @@ export async function POST(req) {
         message: "Mobile number must contain exactly 10 digits",
       });
 
-    if (paymentmode !== "cod") {
-      console.log(
-        validateCardDetails(cardNumber, expiryDate, cvv, cardHolderName)
-      );
-    }
+   
     if (errors.length > 0) {
       return NextResponse.json(
         {
@@ -139,6 +100,7 @@ export async function POST(req) {
       state,
       pincode,
       firstName,
+      mobile,
       lastName,
       Items,
       country,

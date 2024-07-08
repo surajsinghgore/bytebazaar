@@ -14,6 +14,10 @@ const Items = new mongoose.Schema({
     type: String,
     required: true,
   },
+  productImage: {
+    type: String,
+    required: true,
+  },
   price: {
     type: Number,
     required: true,
@@ -50,6 +54,10 @@ const OrderData = new mongoose.Schema(
       ],
     },
     firstName: {
+      type: String,
+      required: true,
+    },
+    mobile: {
       type: String,
       required: true,
     },

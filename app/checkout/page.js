@@ -201,6 +201,7 @@ export default function page() {
         productName: item.productName,
         price: item.price * item.qtyBook,
         qty: item.qtyBook,
+        productImage: item.productImage
       });
     });
     // specialInstruction
