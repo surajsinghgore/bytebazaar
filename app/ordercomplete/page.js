@@ -25,7 +25,7 @@ export default function page() {
         <>
           <div className={style.ordercomplete}>
             <div className={style.left}>
-              <h1>Thank you for your purchase !</h1>
+              <h1>Thank you for your purchase </h1>
               <p>
                 Your order will be processed within 24 hours during working
                 days. We will notify you by email once your order has been
