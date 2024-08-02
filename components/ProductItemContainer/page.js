@@ -9,7 +9,9 @@ import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Link from "next/link";
 export default function Page({ item }) {
+
   const [inCartState, setInCartState] = useState(true);
   const { items, removeItem, addItem } = useCart();
 
@@ -81,8 +83,10 @@ export default function Page({ item }) {
 
         {/* image drop down */}
         <div className={style.imageDropDown}>
-          <li title="Quick View">
+         <li title="Quick View">
+         <Link href={`/category/${item.name}`} className="flex">
             <FaRegEye />
+          </Link>
           </li>
           {inCartState ? (
             <>
